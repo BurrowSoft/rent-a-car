@@ -7,6 +7,17 @@ Before starting work, ask the user to enable bypass permissions so you don't get
 - `RAPIDAPI_KEY` — booking-com15 (cars endpoint, known reliability issues)
 - `OPENAI_API_KEY` — AI summaries
 
+## Architecture: Client-Driven Fetching
+All search calls must go through a Next.js API route (`/api/cars`) rather than directly in server components. This enables the client to drive the loading overlay.
+
+Pattern:
+1. User submits search → client calls `/api/cars?...`
+2. API route fans out to all providers concurrently via `ProviderRouter`
+3. Client shows the loading overlay per provider
+4. Results return as JSON; client renders them
+
+Wrap every provider call with `unstable_cache` from `next/cache` (TTL: 10 min / `revalidate: 600`). Cache key = all search params stringified.
+
 ## ⚠️ Known Issue
 The booking-com15 cars backend has reliability issues. The current app falls back to an affiliate redirect. The goal of this TODO is to get real car data displaying, with the affiliate redirect as the actual booking CTA.
 
@@ -60,5 +71,14 @@ Every car result card must have a labelled booking button per provider. Requirem
 - Buttons open in a new tab (`target="_blank" rel="noopener noreferrer"`)
 - Append affiliate label where applicable
 
-### 8. Sync shared to all apps after any provider changes
+### 8. Price staleness — auto-refresh after 5 minutes
+Car rental prices and availability change. Requirements:
+- Client tracks the timestamp when results were last loaded
+- After 5 minutes on the results page, silently re-call `/api/cars` with the same params
+- While refreshing, show the loading overlay with "Fetching up-to-date prices…" (same overlay component, reused)
+- When fresh results arrive, update the list in place — no hard refresh, no scroll reset
+- If the refresh fails, show a small toast: "Prices could not be refreshed — last updated at HH:MM"
+- Always show a "Prices as of HH:MM" timestamp below the results header
+
+### 9. Sync shared to all apps after any provider changes
 After editing any file in `packages/shared/src/`, copy the entire `packages/shared/` folder to the same path in: flight-booking, hotel-booking, news-feed, main-website, games, shopping.
