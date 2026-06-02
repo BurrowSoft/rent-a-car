@@ -80,5 +80,21 @@ Car rental prices and availability change. Requirements:
 - If the refresh fails, show a small toast: "Prices could not be refreshed — last updated at HH:MM"
 - Always show a "Prices as of HH:MM" timestamp below the results header
 
-### 9. Sync shared to all apps after any provider changes
+### 9. Themed mascot — RentACarMole
+Create `public/mascot.svg` — the base BurrowSoft Mole peeking over a ledge, with a small cartoon car visible beneath the ledge (as if the mole is peeking out from behind a car roof). Same black line-art stroke style. SVG groups: `<g id="mole-base">` and `<g id="prop">`. ViewBox: `0 0 200 200`.
+
+### 10. App thumbnail / OG image
+- `public/og-image.png` — 1200×630px, RentACarMole mascot centred on brand background, "RentACarMole" wordmark below
+- `public/favicon.ico` — mole head only, 32×32 and 16×16
+- `public/apple-touch-icon.png` — 180×180px
+- Wire all into `src/app/layout.tsx` metadata
+
+### 11. Footer — BurrowSoft branding
+Add to the existing footer:
+- Small BurrowSoft logo (mole + wordmark) linking to burrowsoft.com
+- Links to sibling products: FlyMole, BookingMole, InsightMole, GamesMole, ShoppingMole
+- Copyright: "© 2025 BurrowSoft. All rights reserved."
+Logo assets: copy `burrowsoft-logo.svg` from the main-website repo into `public/`.
+
+### 12. Sync shared to all apps after any provider changes
 After editing any file in `packages/shared/src/`, copy the entire `packages/shared/` folder to the same path in: flight-booking, hotel-booking, news-feed, main-website, games, shopping.
