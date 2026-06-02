@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  other: { "google-adsense-account": "ca-pub-1009857008755875" },
   robots: {
     index: true,
     follow: true,
