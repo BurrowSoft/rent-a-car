@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { RentalCar } from "@burrowsoft/shared";
 import { CarLoadingOverlay, type ProviderStatus } from "./CarLoadingOverlay";
 import { CarResultCard } from "./CarResultCard";
+import { AffiliateCarSearch } from "./AffiliateCarSearch";
 
 const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 const SETTLED_DISMISS_MS = 1500; // delay before overlay fades after providers settle
@@ -155,9 +156,7 @@ export function ResultsClient({ params }: { params: SearchParams }) {
 
         {/* Results */}
         {!overlayVisible && cars.length === 0 && (
-          <div className="rounded-xl border border-slate-200 bg-white p-10 text-center text-slate-500">
-            No cars found for this search. Try different dates or location.
-          </div>
+          <AffiliateCarSearch params={params} variant="empty" />
         )}
 
         {cars.length > 0 && (
@@ -177,6 +176,7 @@ export function ResultsClient({ params }: { params: SearchParams }) {
                 </li>
               ))}
             </ul>
+            <AffiliateCarSearch params={params} variant="below" />
           </>
         )}
       </div>
