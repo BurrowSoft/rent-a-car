@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { RentalCar } from "@burrowsoft/shared";
 
 interface Props {
@@ -6,12 +9,12 @@ interface Props {
 }
 
 const CATEGORY_ICONS: Record<string, string> = {
-  "Economy": "🚗",
-  "Compact": "🚙",
-  "SUV": "🚐",
-  "Van": "🚌",
-  "Luxury": "🏎️",
-  "Convertible": "🚘",
+  Economy: "🚗",
+  Compact: "🚙",
+  SUV: "🚐",
+  Van: "🚌",
+  Luxury: "🏎️",
+  Convertible: "🚘",
   "All Categories": "🚗",
 };
 
@@ -23,13 +26,14 @@ function categoryIcon(category: string): string {
 }
 
 export function CarResultCard({ car, isCheapest }: Props) {
+  const t = useTranslations("results");
   const hasPrice = car.pricePerDay.amount > 0;
 
   return (
     <div className="relative flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md sm:flex-row">
       {isCheapest && (
         <span className="absolute right-4 top-4 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
-          Cheapest option
+          {t("cheapest")}
         </span>
       )}
 
@@ -64,7 +68,7 @@ export function CarResultCard({ car, isCheapest }: Props) {
                   <p className="text-2xl font-extrabold text-slate-900">
                     {car.pricePerDay.formatted}
                   </p>
-                  <p className="text-xs text-slate-400">per day</p>
+                  <p className="text-xs text-slate-400">{t("perDay")}</p>
                   {car.totalPrice.amount > 0 && (
                     <p className="text-xs text-slate-500">
                       Total: {car.totalPrice.formatted}
@@ -72,7 +76,7 @@ export function CarResultCard({ car, isCheapest }: Props) {
                   )}
                 </>
               ) : (
-                <p className="text-sm font-semibold text-slate-500">Compare prices →</p>
+                <p className="text-sm font-semibold text-slate-500">{t("comparePrices")}</p>
               )}
             </div>
           </div>
@@ -82,29 +86,29 @@ export function CarResultCard({ car, isCheapest }: Props) {
             <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-500">
               {car.seats > 0 && (
                 <span className="flex items-center gap-1">
-                  <span aria-hidden>👤</span> {car.seats} seats
+                  <span aria-hidden>👤</span> {t("seats", { count: car.seats })}
                 </span>
               )}
               {car.doors != null && (
                 <span className="flex items-center gap-1">
-                  <span aria-hidden>🚪</span> {car.doors} doors
+                  <span aria-hidden>🚪</span> {t("doors", { count: car.doors })}
                 </span>
               )}
               {car.transmission && (
                 <span className="flex items-center gap-1">
                   <span aria-hidden>⚙️</span>{" "}
-                  {car.transmission === "automatic" ? "Auto" : "Manual"}
+                  {car.transmission === "automatic" ? t("automatic") : t("manual")}
                 </span>
               )}
               {car.ac === true && (
                 <span className="flex items-center gap-1">
-                  <span aria-hidden>❄️</span> A/C
+                  <span aria-hidden>❄️</span> {t("ac")}
                 </span>
               )}
               {(car.largeLuggage != null || car.smallLuggage != null) && (
                 <span className="flex items-center gap-1">
                   <span aria-hidden>🧳</span>{" "}
-                  {car.largeLuggage ?? 0}L / {car.smallLuggage ?? 0}S bags
+                  {t("luggage", { large: car.largeLuggage ?? 0, small: car.smallLuggage ?? 0 })}
                 </span>
               )}
             </div>
@@ -137,7 +141,7 @@ export function CarResultCard({ car, isCheapest }: Props) {
                 : "bg-rose-500 hover:bg-rose-600 active:bg-rose-700"
             }`}
           >
-            Book on {car.provider}
+            {t("bookOn", { provider: car.provider })}
             <span aria-hidden className="text-xs opacity-75">↗</span>
           </a>
         </div>

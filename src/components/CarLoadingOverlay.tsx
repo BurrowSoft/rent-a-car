@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export interface ProviderStatus {
   name: string;
@@ -15,14 +16,11 @@ interface Props {
 }
 
 export function CarLoadingOverlay({ isVisible, providers, message }: Props) {
+  const t = useTranslations("overlay");
   const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
-    if (!isVisible) {
-      setOpacity(0);
-    } else {
-      setOpacity(1);
-    }
+    setOpacity(isVisible ? 1 : 0);
   }, [isVisible]);
 
   if (!isVisible && opacity === 0) return null;
@@ -42,14 +40,14 @@ export function CarLoadingOverlay({ isVisible, providers, message }: Props) {
         <div className="mb-5 flex items-center gap-3">
           <span className="text-2xl">🚗</span>
           <p className="text-sm font-semibold text-slate-700">
-            {message ?? "Searching for available cars…"}
+            {message ?? t("searching")}
           </p>
         </div>
 
         {providers.length === 0 ? (
           <div className="flex items-center gap-3 py-1">
             <Spinner />
-            <span className="text-sm text-slate-500">Contacting providers…</span>
+            <span className="text-sm text-slate-500">{t("contacting")}</span>
           </div>
         ) : (
           <ul className="space-y-3">
@@ -75,10 +73,10 @@ export function CarLoadingOverlay({ isVisible, providers, message }: Props) {
                         : "text-sm text-slate-400"
                   }
                 >
-                  {p.status === "loading" && `Loading cars from ${p.name}…`}
+                  {p.status === "loading" && t("loading", { provider: p.name })}
                   {p.status === "done" &&
-                    `${p.name}${p.count != null ? ` — ${p.count} result${p.count !== 1 ? "s" : ""}` : ""}`}
-                  {p.status === "unavailable" && `${p.name} unavailable`}
+                    `${t("done", { provider: p.name })}${p.count != null ? ` — ${p.count}` : ""}`}
+                  {p.status === "unavailable" && t("unavailable", { provider: p.name })}
                 </span>
               </li>
             ))}
@@ -86,7 +84,7 @@ export function CarLoadingOverlay({ isVisible, providers, message }: Props) {
         )}
 
         {allSettled && (
-          <p className="mt-4 text-xs text-slate-400">Preparing results…</p>
+          <p className="mt-4 text-xs text-slate-400">{t("preparing")}</p>
         )}
       </div>
     </div>

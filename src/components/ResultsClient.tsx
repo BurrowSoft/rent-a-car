@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import type { RentalCar } from "@burrowsoft/shared";
 import { CarLoadingOverlay, type ProviderStatus } from "./CarLoadingOverlay";
 import { CarResultCard } from "./CarResultCard";
 import { AffiliateCarSearch } from "./AffiliateCarSearch";
 
-const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
-const SETTLED_DISMISS_MS = 1500; // delay before overlay fades after providers settle
+const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+const SETTLED_DISMISS_MS = 1500;
 
 interface SearchParams {
   pickupLocation: string;
@@ -52,6 +53,9 @@ function buildApiUrl(params: SearchParams): string {
 }
 
 export function ResultsClient({ params }: { params: SearchParams }) {
+  const t = useTranslations("results");
+  const to = useTranslations("overlay");
+
   const [cars, setCars] = useState<RentalCar[]>([]);
   const [overlayProviders, setOverlayProviders] = useState<ProviderStatus[]>([]);
   const [overlayVisible, setOverlayVisible] = useState(true);
@@ -68,14 +72,13 @@ export function ResultsClient({ params }: { params: SearchParams }) {
     async (isRefresh = false) => {
       setOverlayProviders([]);
       setOverlayVisible(true);
-      setOverlayMessage(isRefresh ? "Fetching up-to-date prices…" : undefined);
+      setOverlayMessage(isRefresh ? to("fetchingPrices") : undefined);
 
       try {
         const res = await fetch(buildApiUrl(params));
         if (!res.ok) throw new Error(`API error ${res.status}`);
         const data: ApiResult = await res.json();
 
-        // Map response providers to done status
         const settled: ProviderStatus[] = data.providers.map((name) => ({
           name,
           status: "done",
@@ -84,17 +87,16 @@ export function ResultsClient({ params }: { params: SearchParams }) {
         setOverlayProviders(settled);
         setCars(data.cars);
         setLastUpdated(new Date());
-
-        // Dismiss overlay after short delay
         setTimeout(() => setOverlayVisible(false), SETTLED_DISMISS_MS);
 
-        // Schedule next auto-refresh
         clearRefreshTimer();
         refreshTimer.current = setTimeout(() => fetchCars(true), REFRESH_INTERVAL_MS);
       } catch {
         if (isRefresh) {
           setToast(
-            `Prices could not be refreshed — last updated at ${lastUpdated ? fmtTime(lastUpdated) : "—"}`
+            lastUpdated
+              ? t("pricesAsOf", { time: fmtTime(lastUpdated) }) + " — could not refresh"
+              : "Could not refresh prices"
           );
           setTimeout(() => setToast(null), 5000);
           setOverlayVisible(false);
@@ -135,22 +137,24 @@ export function ResultsClient({ params }: { params: SearchParams }) {
               href="/"
               className="mb-1 inline-flex items-center gap-1 text-sm text-rose-500 hover:underline"
             >
-              ← New search
+              {t("newSearch")}
             </Link>
             <h1 className="text-2xl font-extrabold text-slate-900">
-              Cars in {params.pickupLocation}
+              {t("carsIn", { location: params.pickupLocation })}
             </h1>
             <p className="text-sm text-slate-500">
               {fmtDateRange(params.pickupDate, params.dropoffDate)}
               {params.dropoffLocation && params.dropoffLocation !== params.pickupLocation && (
-                <> · Drop-off: {params.dropoffLocation}</>
+                <> · {t("dropoffLabel", { location: params.dropoffLocation })}</>
               )}
-              {" "}· Driver age {params.driverAge}
+              {" "}· {t("driverAgeLabel", { age: params.driverAge })}
             </p>
           </div>
 
           {lastUpdated && (
-            <p className="text-xs text-slate-400">Prices as of {fmtTime(lastUpdated)}</p>
+            <p className="text-xs text-slate-400">
+              {t("pricesAsOf", { time: fmtTime(lastUpdated) })}
+            </p>
           )}
         </div>
 
@@ -162,7 +166,7 @@ export function ResultsClient({ params }: { params: SearchParams }) {
         {cars.length > 0 && (
           <>
             <p className="mb-4 text-sm text-slate-500">
-              {cars.length} result{cars.length !== 1 ? "s" : ""} found
+              {t("found", { count: cars.length, s: cars.length !== 1 ? "s" : "" })}
             </p>
             <ul className="space-y-4">
               {cars.map((car) => (
@@ -181,7 +185,7 @@ export function ResultsClient({ params }: { params: SearchParams }) {
         )}
       </div>
 
-      {/* Toast notification */}
+      {/* Toast */}
       {toast && (
         <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm text-white shadow-lg">
           {toast}
