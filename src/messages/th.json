@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "เปรียบเทียบรถเช่าจากผู้ให้บริการชั้นนำ"
+  },
+  "hero": {
+    "title": "เปรียบเทียบราคารถเช่า ไม่มีค่าธรรมเนียมซ่อน",
+    "subtitle": "ค้นหาจาก Booking.com, Rentalcars, Kayak และ Expedia",
+    "badge": "เปรียบเทียบบริษัทรถเช่ากว่า 500 แห่ง",
+    "trust1": "✓ ยกเลิกฟรี",
+    "trust2": "✓ ไม่มีค่าธรรมเนียมบัตรเครดิต",
+    "trust3": "✓ บริการ 24/7"
+  },
+  "search": {
+    "pickup": "สถานที่รับรถ",
+    "pickupPlaceholder": "เมือง สนามบิน หรือที่อยู่",
+    "dropoff": "สถานที่คืนรถ",
+    "sameLocation": "คืนที่เดิม",
+    "pickupDate": "วันรับรถ",
+    "pickupTime": "เวลารับรถ",
+    "dropoffDate": "วันคืนรถ",
+    "dropoffTime": "เวลาคืนรถ",
+    "driverAge": "อายุผู้ขับ",
+    "ageUnit": "ปี",
+    "submit": "ค้นหารถเช่า →"
+  },
+  "results": {
+    "carsIn": "รถเช่าใน {location}",
+    "found": "พบรถ {count} คัน",
+    "noneFound": "ไม่พบรถเช่าสำหรับการค้นหานี้ ลองเปลี่ยนวันหรือสถานที่",
+    "newSearch": "← ค้นหาใหม่",
+    "dropoffLabel": "คืนรถ: {location}",
+    "driverAgeLabel": "อายุผู้ขับ {age} ปี",
+    "pricesAsOf": "ราคา ณ เวลา {time}",
+    "fetchingPrices": "กำลังอัปเดตราคา…",
+    "perDay": "ต่อวัน",
+    "bookOn": "จองที่ {provider}",
+    "cheapest": "ราคาถูกที่สุด",
+    "comparePrices": "เปรียบเทียบราคา →",
+    "seats": "{count} ที่นั่ง",
+    "doors": "{count} ประตู",
+    "automatic": "อัตโนมัติ",
+    "manual": "เกียร์กระปุก",
+    "ac": "แอร์",
+    "luggage": "กระเป๋า {large}ใบใหญ่ / {small}ใบเล็ก"
+  },
+  "affiliate": {
+    "compareOn": "เปรียบเทียบบนเว็บชั้นนำ",
+    "alsoCompare": "เปรียบเทียบที่อื่นด้วย",
+    "title": "ค้นหารถเช่าใน {location}",
+    "moreOptions": "ต้องการตัวเลือกเพิ่มเติม?",
+    "subtitle": "เราค้นหาตรงจากแพลตฟอร์มเช่ารถรายใหญ่เพื่อให้คุณได้ราคาจริงเสมอ",
+    "moreSites": "เปรียบเทียบราคาจากแพลตฟอร์มเช่ารถเพิ่มเติมเพื่อรับดีลดีที่สุด",
+    "note": "เปิดหน้าเว็บพาร์ทเนอร์พร้อมกรอกข้อมูลให้อัตโนมัติ · ฟรี"
+  },
+  "overlay": {
+    "searching": "กำลังค้นหารถเช่า…",
+    "contacting": "กำลังติดต่อผู้ให้บริการ…",
+    "preparing": "กำลังเตรียมผลลัพธ์…",
+    "loading": "กำลังโหลดรถเช่าจาก {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} ไม่พร้อมใช้งาน",
+    "fetchingPrices": "กำลังอัปเดตราคา…"
+  },
+  "footer": {
+    "popular": "ยอดนิยม",
+    "europe": "ยุโรป",
+    "asiaPacific": "เอเชีย & แปซิฟิก",
+    "help": "ช่วยเหลือ",
+    "insurance": "ข้อมูลประกันภัย",
+    "cancellation": "นโยบายการยกเลิก",
+    "tagline": "ค้นหาลึก สร้างสรรค์โซลูชัน",
+    "copyright": "© 2025 BurrowSoft. All rights reserved."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "Compare cars from top suppliers"
+  },
+  "hero": {
+    "title": "Compare Rental Cars. No Hidden Fees.",
+    "subtitle": "Search across Booking.com, Rentalcars, Kayak and Expedia.",
+    "badge": "Compare 500+ car rental suppliers",
+    "trust1": "✓ Free cancellation",
+    "trust2": "✓ No credit card fees",
+    "trust3": "✓ 24/7 support"
+  },
+  "search": {
+    "pickup": "Pick-up location",
+    "pickupPlaceholder": "City, airport or address",
+    "dropoff": "Drop-off location",
+    "sameLocation": "Return to same location",
+    "pickupDate": "Pick-up date",
+    "pickupTime": "Pick-up time",
+    "dropoffDate": "Drop-off date",
+    "dropoffTime": "Drop-off time",
+    "driverAge": "Driver age",
+    "ageUnit": "years old",
+    "submit": "Search rental cars →"
+  },
+  "results": {
+    "carsIn": "Cars in {location}",
+    "found": "{count} result{s} found",
+    "noneFound": "No cars found for this search. Try different dates or location.",
+    "newSearch": "← New search",
+    "dropoffLabel": "Drop-off: {location}",
+    "driverAgeLabel": "Driver age {age}",
+    "pricesAsOf": "Prices as of {time}",
+    "fetchingPrices": "Fetching up-to-date prices…",
+    "perDay": "per day",
+    "bookOn": "Book on {provider}",
+    "cheapest": "Cheapest option",
+    "comparePrices": "Compare prices →",
+    "seats": "{count} seats",
+    "doors": "{count} doors",
+    "automatic": "Auto",
+    "manual": "Manual",
+    "ac": "A/C",
+    "luggage": "{large}L / {small}S bags"
+  },
+  "affiliate": {
+    "compareOn": "Compare on top sites",
+    "alsoCompare": "Also compare on",
+    "title": "Find cars in {location}",
+    "moreOptions": "Looking for more options?",
+    "subtitle": "We search directly on the biggest car rental platforms so you always get the real price.",
+    "moreSites": "Compare prices across more car rental platforms to find the best deal.",
+    "note": "Opens on the partner site with your search pre-filled · Free to use"
+  },
+  "overlay": {
+    "searching": "Searching for available cars…",
+    "contacting": "Contacting providers…",
+    "preparing": "Preparing results…",
+    "loading": "Loading cars from {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} unavailable",
+    "fetchingPrices": "Fetching up-to-date prices…"
+  },
+  "footer": {
+    "popular": "Popular",
+    "europe": "Europe",
+    "asiaPacific": "Asia & Pacific",
+    "help": "Help",
+    "insurance": "Insurance info",
+    "cancellation": "Cancellation policy",
+    "tagline": "Digging deep. Building solutions.",
+    "copyright": "© 2025 BurrowSoft. All rights reserved."
+  }
+}

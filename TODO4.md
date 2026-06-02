@@ -79,3 +79,59 @@ Already in TODO3 — confirm these are in `POPULAR_LOCATIONS` in `src/lib/search
 
 ### 5. Sync packages/shared to all apps after changes
 After editing any shared car provider file, copy `packages/shared/` to: flight-booking, hotel-booking, news-feed, main-website, games, shopping.
+
+---
+
+## Brazil Region (country === "BR")
+
+### What the user needs to arrange
+
+| Service | Registration | Notes |
+|---|---|---|
+| **Rentcars.com.br affiliate** | https://www.rentcars.com/en/affiliates | Brazilian aggregator. Covers Localiza, Movida, Unidas, Locamerica. Affiliate program available. |
+| **Localiza affiliate** | https://www.localiza.com | Dominant Brazilian rental company (merged with Hertz Brazil). No public API — affiliate redirect only. |
+
+New env vars for Vercel (rent-a-car project):
+- `NEXT_PUBLIC_RENTCARS_BR_AFFILIATE` (from rentcars.com.br affiliate program)
+- `NEXT_PUBLIC_LOCALIZA_AFFILIATE` (from Localiza affiliate program)
+
+**Note:** Localiza, Movida, and Unidas have no public APIs. The affiliate redirect approach is the only viable option for Brazil car rentals — same pattern as the current multi-affiliate grid.
+
+### Brazilian affiliate providers in AffiliateCarSearch
+When `country === "BR"`, swap or extend the provider grid with Brazilian-specific options:
+
+```ts
+// Brazilian providers
+{
+  name: "Rentcars.com.br",
+  description: "Compare Localiza, Movida, Unidas e mais",
+  buildUrl: (params) => `https://www.rentcars.com/en/rental-cars/brazil/${encodeURIComponent(params.pickupLocation)}/?pickUpDate=${params.pickupDate}&...&aff=${process.env.NEXT_PUBLIC_RENTCARS_BR_AFFILIATE}`,
+  color: "bg-green-600 hover:bg-green-700"
+},
+{
+  name: "Localiza Hertz",
+  description: "Maior locadora do Brasil",
+  buildUrl: (params) => `https://www.localiza.com/brasil/pt-br/reserve?local=${encodeURIComponent(params.pickupLocation)}&retirada=${params.pickupDate}&devolucao=${params.dropoffDate}`,
+  color: "bg-yellow-500 hover:bg-yellow-600"
+},
+{
+  name: "Movida",
+  description: "Segunda maior locadora do Brasil",
+  buildUrl: (params) => `https://www.movida.com.br/aluguel-de-carros?origem=${encodeURIComponent(params.pickupLocation)}&data_retirada=${params.pickupDate}&data_devolucao=${params.dropoffDate}`,
+  color: "bg-red-500 hover:bg-red-600"
+}
+```
+
+Keep Rentalcars.com and Expedia in the list (both cover Brazil) — just reorder for relevance.
+
+### Popular Brazilian pickup locations
+Add to `POPULAR_LOCATIONS` in `src/lib/search.ts`:
+```ts
+{ name: "São Paulo (Guarulhos), Brazil", code: "GRU" },
+{ name: "Rio de Janeiro (Galeão), Brazil", code: "GIG" },
+{ name: "Brasília, Brazil", code: "BSB" },
+{ name: "Salvador, Brazil", code: "SSA" },
+{ name: "Fortaleza, Brazil", code: "FOR" },
+{ name: "Florianópolis, Brazil", code: "FLN" },
+{ name: "Foz do Iguaçu, Brazil", code: "IGU" },
+```

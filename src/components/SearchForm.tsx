@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const today = () => new Date().toISOString().slice(0, 10);
 const inDays = (n: number) => {
@@ -11,6 +12,7 @@ const inDays = (n: number) => {
 };
 
 export function SearchForm() {
+  const t = useTranslations("search");
   const router = useRouter();
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
@@ -48,14 +50,14 @@ export function SearchForm() {
       {/* Pickup location */}
       <div className="mb-4">
         <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Pick-up location
+          {t("pickup")}
         </label>
         <input
           required
           type="text"
           value={pickupLocation}
           onChange={(e) => setPickupLocation(e.target.value)}
-          placeholder="City, airport or address"
+          placeholder={t("pickupPlaceholder")}
           className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100"
         />
       </div>
@@ -70,7 +72,7 @@ export function SearchForm() {
           className="h-4 w-4 rounded border-slate-300 accent-rose-500"
         />
         <label htmlFor="same-dropoff" className="text-sm text-slate-600">
-          Return to same location
+          {t("sameLocation")}
         </label>
       </div>
 
@@ -78,14 +80,14 @@ export function SearchForm() {
       {!sameDropoff && (
         <div className="mb-4">
           <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Drop-off location
+            {t("dropoff")}
           </label>
           <input
             required
             type="text"
             value={dropoffLocation}
             onChange={(e) => setDropoffLocation(e.target.value)}
-            placeholder="City, airport or address"
+            placeholder={t("pickupPlaceholder")}
             className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100"
           />
         </div>
@@ -95,7 +97,7 @@ export function SearchForm() {
       <div className="mb-4 grid grid-cols-2 gap-3">
         <div>
           <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Pick-up date
+            {t("pickupDate")}
           </label>
           <input
             required
@@ -108,19 +110,19 @@ export function SearchForm() {
         </div>
         <div>
           <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Pick-up time
+            {t("pickupTime")}
           </label>
           <select
             value={pickupTime}
             onChange={(e) => setPickupTime(e.target.value)}
             className="w-full rounded-lg border border-slate-300 px-3 py-3 text-sm text-slate-900 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100"
           >
-            {times.map((t) => <option key={t} value={t}>{t}</option>)}
+            {times.map((ti) => <option key={ti} value={ti}>{ti}</option>)}
           </select>
         </div>
         <div>
           <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Drop-off date
+            {t("dropoffDate")}
           </label>
           <input
             required
@@ -133,14 +135,14 @@ export function SearchForm() {
         </div>
         <div>
           <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Drop-off time
+            {t("dropoffTime")}
           </label>
           <select
             value={dropoffTime}
             onChange={(e) => setDropoffTime(e.target.value)}
             className="w-full rounded-lg border border-slate-300 px-3 py-3 text-sm text-slate-900 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100"
           >
-            {times.map((t) => <option key={t} value={t}>{t}</option>)}
+            {times.map((ti) => <option key={ti} value={ti}>{ti}</option>)}
           </select>
         </div>
       </div>
@@ -148,7 +150,7 @@ export function SearchForm() {
       {/* Driver age */}
       <div className="mb-6">
         <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Driver age
+          {t("driverAge")}
         </label>
         <select
           value={driverAge}
@@ -156,7 +158,9 @@ export function SearchForm() {
           className="w-full rounded-lg border border-slate-300 px-3 py-3 text-sm text-slate-900 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100"
         >
           {Array.from({ length: 51 }, (_, i) => i + 18).map((age) => (
-            <option key={age} value={String(age)}>{age} years old</option>
+            <option key={age} value={String(age)}>
+              {age} {t("ageUnit")}
+            </option>
           ))}
         </select>
       </div>
@@ -165,7 +169,7 @@ export function SearchForm() {
         type="submit"
         className="w-full rounded-xl bg-rose-500 px-6 py-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-rose-600 active:bg-rose-700"
       >
-        Search rental cars →
+        {t("submit")}
       </button>
     </form>
   );
