@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { buildBookingCarsUrl } from "@/lib/search";
 
-const today = () => new Date().toISOString().split("T")[0];
+const today = () => new Date().toISOString().slice(0, 10);
 const inDays = (n: number) => {
   const d = new Date();
   d.setDate(d.getDate() + n);
-  return d.toISOString().split("T")[0];
+  return d.toISOString().slice(0, 10);
 };
 
 export function SearchForm() {
