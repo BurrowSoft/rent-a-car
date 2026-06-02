@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { buildBookingCarsUrl } from "@/lib/search";
+import { useRouter } from "next/navigation";
 
 const today = () => new Date().toISOString().slice(0, 10);
 const inDays = (n: number) => {
@@ -11,6 +11,7 @@ const inDays = (n: number) => {
 };
 
 export function SearchForm() {
+  const router = useRouter();
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
   const [sameDropoff, setSameDropoff] = useState(true);
@@ -22,7 +23,7 @@ export function SearchForm() {
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    const url = buildBookingCarsUrl({
+    const sp = new URLSearchParams({
       pickupLocation,
       dropoffLocation: sameDropoff ? pickupLocation : dropoffLocation,
       pickupDate,
@@ -31,7 +32,7 @@ export function SearchForm() {
       dropoffTime,
       driverAge,
     });
-    window.open(url, "_blank", "noopener,noreferrer");
+    router.push(`/results?${sp.toString()}`);
   }
 
   const times = Array.from({ length: 24 }, (_, i) => {

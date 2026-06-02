@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/VICTUS/Desktop/burrowsoft-web-apps/**)",
+      "WebSearch",
+      "WebFetch(domain:rapidapi.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:pricelinepartnersolutions.com)",
+      "WebFetch(domain:technosoftwares.com)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\VICTUS\\Desktop\\burrowsoft-web-apps"
+    ]
+  }
+}

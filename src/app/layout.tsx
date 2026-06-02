@@ -22,11 +22,17 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — Compare & Book Rental Cars Worldwide`,
     description: SITE_DESCRIPTION,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — Compare & Book Rental Cars Worldwide`,
     description: SITE_DESCRIPTION,
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
@@ -99,7 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </ul>
               </div>
               <div>
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">Asia & Pacific</h3>
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">Asia &amp; Pacific</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li><span className="text-slate-400">Dubai</span></li>
                   <li><span className="text-slate-400">Bangkok</span></li>
@@ -120,9 +126,61 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </ul>
               </div>
             </div>
-            <p className="mt-8 border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
-              © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
-            </p>
+
+            {/* BurrowSoft branding */}
+            <div className="mt-8 border-t border-slate-100 pt-6">
+              <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+                <a
+                  href="https://burrowsoft.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors"
+                  aria-label="BurrowSoft"
+                >
+                  {/* Inline BurrowSoft logo — mole head + wordmark */}
+                  <svg width="22" height="22" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="100" cy="100" r="96" fill="#f43f5e"/>
+                    <circle cx="100" cy="90" r="50" fill="white" stroke="#1e2d3d" strokeWidth="6"/>
+                    <circle cx="82" cy="86" r="15" fill="white" stroke="#1e2d3d" strokeWidth="4"/>
+                    <circle cx="118" cy="86" r="15" fill="white" stroke="#1e2d3d" strokeWidth="4"/>
+                    <circle cx="82" cy="86" r="7" fill="#1e2d3d"/>
+                    <circle cx="84" cy="84" r="3" fill="white"/>
+                    <circle cx="118" cy="86" r="7" fill="#1e2d3d"/>
+                    <circle cx="120" cy="84" r="3" fill="white"/>
+                    <ellipse cx="100" cy="108" rx="6" ry="4.5" fill="#1e2d3d"/>
+                    <rect x="10" y="134" width="180" height="14" rx="5" fill="#1e2d3d"/>
+                  </svg>
+                  <span className="text-sm font-semibold">BurrowSoft</span>
+                </a>
+
+                <nav aria-label="BurrowSoft products">
+                  <ul className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-slate-400">
+                    {[
+                      { label: "FlyMole", href: "https://flymole.com" },
+                      { label: "BookingMole", href: "https://bookingmole.com" },
+                      { label: "InsightMole", href: "https://insightmole.com" },
+                      { label: "GamesMole", href: "https://gamesmole.com" },
+                      { label: "ShoppingMole", href: "https://shoppingmole.com" },
+                    ].map((p) => (
+                      <li key={p.label}>
+                        <a
+                          href={p.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-rose-500 transition-colors"
+                        >
+                          {p.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+
+                <p className="text-xs text-slate-400">
+                  © 2025 BurrowSoft. All rights reserved.
+                </p>
+              </div>
+            </div>
           </div>
         </footer>
         <Analytics />
