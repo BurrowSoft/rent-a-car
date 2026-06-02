@@ -5,8 +5,9 @@ import { Sarabun } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import { LanguageSelector } from "@burrowsoft/shared";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
-import { LanguageSelector } from "@/components/LanguageSelector";
+import { LazadaFloatingAd } from "@/components/LazadaFloatingAd";
 import "./globals.css";
 
 const sarabun = Sarabun({
@@ -97,7 +98,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 <span className="hidden sm:block text-xs text-slate-400">
                   {tn("tagline")}
                 </span>
-                <LanguageSelector />
+                <LanguageSelector locales={["en", "th"]} />
               </div>
             </nav>
           </header>
@@ -201,6 +202,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               </div>
             </div>
           </footer>
+          <LazadaFloatingAd />
           <Analytics />
         </NextIntlClientProvider>
       </body>

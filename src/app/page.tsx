@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { SearchForm } from "@/components/SearchForm";
 import { POPULAR_LOCATIONS } from "@/lib/search";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
@@ -9,14 +10,16 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 };
 
-const FEATURES = [
-  { icon: "🏆", title: "Top suppliers", body: "Hertz, Avis, Budget, Enterprise, Sixt and more — all in one search." },
-  { icon: "💰", title: "Best price", body: "We compare rates across suppliers so you always get the lowest fare." },
-  { icon: "🚫", title: "No hidden fees", body: "The price you see includes taxes and standard coverage. No surprises." },
-  { icon: "🔄", title: "Free cancellation", body: "Most bookings can be cancelled free of charge up to 48 hours before pickup." },
-];
+export default async function HomePage() {
+  const t = await getTranslations("hero");
 
-export default function HomePage() {
+  const FEATURES = [
+    { icon: "🏆", titleKey: "feature1Title" as const, bodyKey: "feature1Body" as const },
+    { icon: "💰", titleKey: "feature2Title" as const, bodyKey: "feature2Body" as const },
+    { icon: "🚫", titleKey: "feature3Title" as const, bodyKey: "feature3Body" as const },
+    { icon: "🔄", titleKey: "feature4Title" as const, bodyKey: "feature4Body" as const },
+  ];
+
   return (
     <>
       {/* Hero */}
@@ -26,18 +29,18 @@ export default function HomePage() {
             <div>
               <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" />
-                Compare 500+ car rental suppliers
+                {t("badge")}
               </p>
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-                Find your perfect<br />rental car.
+                {t("title")}
               </h1>
               <p className="mt-4 text-lg text-rose-100 leading-relaxed">
-                {SITE_DESCRIPTION}
+                {t("subtitle")}
               </p>
               <div className="mt-6 flex flex-wrap gap-3 text-sm text-rose-100">
-                <span>✓ Free cancellation</span>
-                <span>✓ No credit card fees</span>
-                <span>✓ 24/7 support</span>
+                <span>{t("trust1")}</span>
+                <span>{t("trust2")}</span>
+                <span>{t("trust3")}</span>
               </div>
             </div>
             <div>
@@ -52,10 +55,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {FEATURES.map((f) => (
-              <div key={f.title} className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+              <div key={f.titleKey} className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
                 <div className="mb-3 text-3xl">{f.icon}</div>
-                <h3 className="mb-1 text-sm font-bold text-slate-900">{f.title}</h3>
-                <p className="text-xs leading-relaxed text-slate-500">{f.body}</p>
+                <h3 className="mb-1 text-sm font-bold text-slate-900">{t(f.titleKey)}</h3>
+                <p className="text-xs leading-relaxed text-slate-500">{t(f.bodyKey)}</p>
               </div>
             ))}
           </div>
@@ -65,7 +68,7 @@ export default function HomePage() {
       {/* Popular locations */}
       <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="mb-8 text-2xl font-bold text-slate-900">Popular destinations</h2>
+          <h2 className="mb-8 text-2xl font-bold text-slate-900">{t("popularTitle")}</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {POPULAR_LOCATIONS.map((loc) => (
               <div

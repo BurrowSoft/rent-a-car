@@ -4,12 +4,21 @@
     "tagline": "Compare cars from top suppliers"
   },
   "hero": {
-    "title": "Compare Rental Cars. No Hidden Fees.",
-    "subtitle": "Search across Booking.com, Rentalcars, Kayak and Expedia.",
+    "title": "Find your perfect rental car.",
+    "subtitle": "Compare and book rental cars worldwide. Find the best deals from top suppliers — no hidden fees.",
     "badge": "Compare 500+ car rental suppliers",
     "trust1": "✓ Free cancellation",
     "trust2": "✓ No credit card fees",
-    "trust3": "✓ 24/7 support"
+    "trust3": "✓ 24/7 support",
+    "feature1Title": "Top suppliers",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt and more — all in one search.",
+    "feature2Title": "Best price",
+    "feature2Body": "We compare rates across suppliers so you always get the lowest fare.",
+    "feature3Title": "No hidden fees",
+    "feature3Body": "The price you see includes taxes and standard coverage. No surprises.",
+    "feature4Title": "Free cancellation",
+    "feature4Body": "Most bookings can be cancelled free of charge up to 48 hours before pickup.",
+    "popularTitle": "Popular destinations"
   },
   "search": {
     "pickup": "Pick-up location",
