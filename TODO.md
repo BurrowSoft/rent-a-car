@@ -44,5 +44,21 @@ If two car rental providers are wired:
 - Show both prices side by side on the results card
 - "Cheapest option" badge on the lowest price
 
-### 6. Sync shared to all apps after any provider changes
+### 6. Loading overlay — show while APIs are fetching
+The search results page must show a loading overlay while provider calls are in flight. Requirements:
+- Each active provider fetches concurrently; the overlay displays one animated line per provider, e.g. "Loading cars from Booking.com…" / "Loading cars from RentalCars…"
+- As each provider resolves, its line gets a checkmark and results stream in below
+- If a provider fails, its line shows "[Provider] unavailable" in muted text — no hard error
+- Implement as a client component (`<CarLoadingOverlay providers={string[]} />`)
+- Overlay fades out once all providers have settled
+
+### 7. Provider redirect buttons
+Every car result card must have a labelled booking button per provider. Requirements:
+- Button label: "Book on [Provider]" (e.g. "Book on Booking.com", "Book on RentalCars")
+- Each provider class must expose a `bookingUrl(car: RentalCar, pickUp: string, dropOff: string, dates: { from: string; to: string }): string` method returning a deep-link with location and dates pre-filled
+- Show all available provider buttons per result; highlight the cheapest
+- Buttons open in a new tab (`target="_blank" rel="noopener noreferrer"`)
+- Append affiliate label where applicable
+
+### 8. Sync shared to all apps after any provider changes
 After editing any file in `packages/shared/src/`, copy the entire `packages/shared/` folder to the same path in: flight-booking, hotel-booking, news-feed, main-website, games, shopping.
