@@ -48,8 +48,8 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Widget — clear sticky header with mt-16 */}
-      <div className={isLocalrent ? "w-full mt-16" : "mx-auto max-w-5xl px-4 py-8 mt-16"}>
+      {/* Widget */}
+      <div className={isLocalrent ? "w-full" : "mx-auto max-w-5xl px-4 py-8"}>
         <CarRentalWidget country={country} />
       </div>
     </>
