@@ -105,7 +105,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+          <header className="sticky top-0 z-[9999] border-b border-slate-200 bg-white/95 backdrop-blur">
             <nav
               className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3"
               aria-label="Main navigation"
