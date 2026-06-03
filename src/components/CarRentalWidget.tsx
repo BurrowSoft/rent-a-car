@@ -69,8 +69,3 @@ export function CarRentalWidget({ country }: Props) {
   return <div ref={containerRef} className="w-full" />;
 }
 
-/** Returns true when the country maps to Localrent (full-page widget, no hero needed). */
-export function isLocalrentCountry(country: string): boolean {
-  const config = COUNTRY_CONFIG[country] ?? FALLBACK;
-  return config.provider === "localrent";
-}

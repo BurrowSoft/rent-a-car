@@ -1,7 +1,14 @@
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { detectCountry } from "@burrowsoft/shared";
-import { CarRentalWidget, isLocalrentCountry } from "@/components/CarRentalWidget";
+import { CarRentalWidget } from "@/components/CarRentalWidget";
+
+function getProvider(country: string) {
+  if (["ES", "RU", "BR", "FR"].includes(country)) return "economybookings";
+  if (["JP", "MX"].includes(country)) return "qeeq";
+  if (["FI", "PL", "GB", "US"].includes(country)) return "autoeurope";
+  return "localrent";
+}
 import { AffiliateCarSearch } from "@/components/AffiliateCarSearch";
 import { POPULAR_LOCATIONS } from "@/lib/search";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
@@ -26,7 +33,7 @@ const EMPTY_PARAMS = {
 
 export default async function HomePage() {
   const country = detectCountry(await headers() as unknown as Headers);
-  const isLocalrent = isLocalrentCountry(country);
+  const isLocalrent = getProvider(country) === "localrent";
   const t = await getTranslations("hero");
 
   const FEATURES = [
