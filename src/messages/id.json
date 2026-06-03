@@ -1,0 +1,50 @@
+{
+  "nav": { "home": "RentACarMole", "tagline": "Bandingkan mobil dari penyedia terbaik" },
+  "hero": {
+    "title": "Temukan mobil sewaan yang sempurna.",
+    "subtitle": "Bandingkan dan pesan mobil sewaan di seluruh dunia. Penawaran terbaik dari penyedia terkemuka — tanpa biaya tersembunyi.",
+    "badge": "Bandingkan 500+ perusahaan sewa mobil",
+    "trust1": "✓ Pembatalan gratis", "trust2": "✓ Tanpa biaya kartu kredit", "trust3": "✓ Dukungan 24/7",
+    "feature1Title": "Penyedia terbaik", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt, dan lainnya — semua dalam satu pencarian.",
+    "feature2Title": "Harga terbaik", "feature2Body": "Kami membandingkan tarif semua penyedia agar Anda selalu mendapatkan harga terendah.",
+    "feature3Title": "Tanpa biaya tersembunyi", "feature3Body": "Harga sudah termasuk pajak dan asuransi standar. Tidak ada kejutan.",
+    "feature4Title": "Pembatalan gratis", "feature4Body": "Sebagian besar pemesanan dapat dibatalkan gratis hingga 48 jam sebelum pengambilan.",
+    "popularTitle": "Destinasi populer"
+  },
+  "search": {
+    "pickup": "Lokasi pengambilan", "pickupPlaceholder": "Kota, bandara, atau alamat",
+    "dropoff": "Lokasi pengembalian", "sameLocation": "Kembalikan di lokasi yang sama",
+    "pickupDate": "Tanggal pengambilan", "pickupTime": "Waktu pengambilan",
+    "dropoffDate": "Tanggal pengembalian", "dropoffTime": "Waktu pengembalian",
+    "driverAge": "Usia pengemudi", "ageUnit": "tahun", "submit": "Cari mobil sewaan →"
+  },
+  "results": {
+    "carsIn": "Mobil di {location}", "found": "{count} hasil ditemukan",
+    "noneFound": "Tidak ada mobil yang ditemukan. Coba tanggal atau lokasi lain.",
+    "newSearch": "← Pencarian baru", "dropoffLabel": "Pengembalian: {location}",
+    "driverAgeLabel": "Usia pengemudi {age}", "pricesAsOf": "Harga per {time}",
+    "fetchingPrices": "Memperbarui harga…", "perDay": "per hari",
+    "bookOn": "Pesan di {provider}", "cheapest": "Opsi termurah",
+    "comparePrices": "Bandingkan harga →", "seats": "{count} kursi",
+    "doors": "{count} pintu", "automatic": "Otomatis", "manual": "Manual",
+    "ac": "AC", "luggage": "{large}B / {small}K koper"
+  },
+  "affiliate": {
+    "compareOn": "Bandingkan di situs terbaik", "alsoCompare": "Bandingkan juga di",
+    "title": "Cari mobil di {location}", "moreOptions": "Mencari lebih banyak pilihan?",
+    "subtitle": "Kami mencari langsung di platform sewa terbesar agar Anda selalu mendapatkan harga nyata.",
+    "moreSites": "Bandingkan harga di lebih banyak platform untuk penawaran terbaik.",
+    "note": "Membuka situs mitra dengan pencarian Anda yang sudah terisi · Gratis"
+  },
+  "overlay": {
+    "searching": "Mencari mobil yang tersedia…", "contacting": "Menghubungi penyedia…",
+    "preparing": "Menyiapkan hasil…", "loading": "Memuat mobil dari {provider}…",
+    "done": "{provider}", "unavailable": "{provider} tidak tersedia", "fetchingPrices": "Memperbarui harga…"
+  },
+  "footer": {
+    "popular": "Populer", "europe": "Eropa", "asiaPacific": "Asia & Pasifik", "help": "Bantuan",
+    "insurance": "Info asuransi", "cancellation": "Kebijakan pembatalan",
+    "tagline": "Menggali lebih dalam. Membangun solusi.",
+    "copyright": "© 2025 BurrowSoft. Hak cipta dilindungi."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "nav": { "home": "RentACarMole", "tagline": "一流サプライヤーでレンタカーを比較" },
+  "hero": {
+    "title": "理想のレンタカーを見つけよう。",
+    "subtitle": "世界中でレンタカーを比較・予約。一流サプライヤーの最安値 — 隠れた費用なし。",
+    "badge": "500以上のレンタカー会社を比較",
+    "trust1": "✓ 無料キャンセル", "trust2": "✓ カード手数料なし", "trust3": "✓ 24時間サポート",
+    "feature1Title": "一流サプライヤー", "feature1Body": "Hertz、Avis、Budget、Enterprise、Sixt など — 一度の検索で比較。",
+    "feature2Title": "最安値", "feature2Body": "全サプライヤーの料金を比較して、常に最安値をご提供。",
+    "feature3Title": "隠れた費用なし", "feature3Body": "表示価格には税金と標準補償が含まれています。追加費用なし。",
+    "feature4Title": "無料キャンセル", "feature4Body": "ほとんどの予約は引き取り48時間前まで無料でキャンセル可能。",
+    "popularTitle": "人気の目的地"
+  },
+  "search": {
+    "pickup": "乗車場所", "pickupPlaceholder": "都市、空港、または住所",
+    "dropoff": "返却場所", "sameLocation": "同じ場所で返却",
+    "pickupDate": "乗車日", "pickupTime": "乗車時間",
+    "dropoffDate": "返却日", "dropoffTime": "返却時間",
+    "driverAge": "ドライバーの年齢", "ageUnit": "歳", "submit": "レンタカーを検索 →"
+  },
+  "results": {
+    "carsIn": "{location}のレンタカー", "found": "{count}件見つかりました",
+    "noneFound": "検索条件に合うレンタカーがありません。日程や場所を変えてみてください。",
+    "newSearch": "← 新しい検索", "dropoffLabel": "返却先：{location}",
+    "driverAgeLabel": "ドライバー年齢 {age}歳", "pricesAsOf": "{time}時点の料金",
+    "fetchingPrices": "料金を更新中…", "perDay": "1日あたり",
+    "bookOn": "{provider}で予約", "cheapest": "最安値オプション",
+    "comparePrices": "料金を比較 →", "seats": "{count}人乗り",
+    "doors": "{count}ドア", "automatic": "AT", "manual": "MT",
+    "ac": "エアコン", "luggage": "大{large}個 / 小{small}個"
+  },
+  "affiliate": {
+    "compareOn": "主要サイトで比較", "alsoCompare": "他にも比較",
+    "title": "{location}でレンタカーを探す", "moreOptions": "他の選択肢をお探しですか？",
+    "subtitle": "大手レンタカープラットフォームで直接検索し、常に本当の価格をご提供します。",
+    "moreSites": "より多くのプラットフォームで料金を比較して最良の取引を見つけましょう。",
+    "note": "検索内容が入力済みのパートナーサイトが開きます · 無料"
+  },
+  "overlay": {
+    "searching": "利用可能なレンタカーを検索中…", "contacting": "プロバイダーに問い合わせ中…",
+    "preparing": "結果を準備中…", "loading": "{provider}からレンタカーを読み込み中…",
+    "done": "{provider}", "unavailable": "{provider} は利用不可", "fetchingPrices": "料金を更新中…"
+  },
+  "footer": {
+    "popular": "人気", "europe": "ヨーロッパ", "asiaPacific": "アジア・太平洋", "help": "ヘルプ",
+    "insurance": "保険情報", "cancellation": "キャンセルポリシー",
+    "tagline": "深く掘り下げ、ソリューションを構築。",
+    "copyright": "© 2025 BurrowSoft. 無断複製禁止。"
+  }
+}
