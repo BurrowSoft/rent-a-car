@@ -61,6 +61,26 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  alternates: {
+    languages: {
+      "en": "https://www.rentacarmole.com",
+      "th": "https://www.rentacarmole.com",
+      "es": "https://www.rentacarmole.com",
+      "ru": "https://www.rentacarmole.com",
+      "pt-BR": "https://www.rentacarmole.com",
+      "fr": "https://www.rentacarmole.com",
+      "ja": "https://www.rentacarmole.com",
+      "zh": "https://www.rentacarmole.com",
+      "zh-TW": "https://www.rentacarmole.com",
+      "ar": "https://www.rentacarmole.com",
+      "de": "https://www.rentacarmole.com",
+      "id": "https://www.rentacarmole.com",
+      "ko": "https://www.rentacarmole.com",
+      "it": "https://www.rentacarmole.com",
+      "vi": "https://www.rentacarmole.com",
+      "x-default": "https://www.rentacarmole.com",
+    },
+  },
   other: { "google-adsense-account": "ca-pub-1009857008755875" },
   robots: {
     index: true,
@@ -105,6 +125,24 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <meta name="fo-verify" content="bbc63628-c7bf-452c-aa36-d70a12ac92ba" />
       </head>
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "RentACarMole",
+            "url": "https://www.rentacarmole.com",
+            "description": "Compare car rental deals from top suppliers worldwide. No hidden fees, free cancellation.",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.rentacarmole.com/?q={pickup_location}"
+              },
+              "query-input": "required name=pickup_location"
+            }
+          }) }}
+        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <header className="border-b border-slate-200 bg-white">
             <nav
