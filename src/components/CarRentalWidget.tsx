@@ -10,7 +10,6 @@ interface WidgetConfig {
   countryId?: number; // Localrent only
 }
 
-/** Country → widget provider (locale is now driven by useLocale()) */
 const COUNTRY_CONFIG: Record<string, WidgetConfig> = {
   TH: { provider: "localrent",       countryId: 9  },
   ES: { provider: "economybookings"                 },
@@ -27,12 +26,25 @@ const COUNTRY_CONFIG: Record<string, WidgetConfig> = {
 
 const FALLBACK: WidgetConfig = { provider: "localrent", countryId: 23 };
 
-// Map next-intl locale → Travelpayouts widget locale param
+// Map next-intl locale → widget locale (explicit dropdown selection)
 const WIDGET_LOCALE: Record<string, string> = {
   en: "en", th: "th", es: "es", ru: "ru",
   "pt-BR": "pt", fr: "fr", ja: "ja", zh: "zh",
   "zh-TW": "zh", ar: "ar", de: "de", id: "id",
   ko: "ko", it: "it", vi: "vi",
+};
+
+// ISO country → native widget locale (used when dropdown defaulted to English)
+const COUNTRY_NATIVE_LOCALE: Record<string, string> = {
+  FI: "fi", PL: "pl", DE: "de", AT: "de", CH: "de",
+  FR: "fr", BE: "fr", LU: "fr", MC: "fr",
+  ES: "es", MX: "es", AR: "es", CO: "es", CL: "es",
+  BR: "pt", PT: "pt",
+  RU: "ru", UA: "ru", KZ: "ru", BY: "ru",
+  JP: "ja", CN: "zh", TW: "zh", HK: "zh",
+  KR: "ko", ID: "id", VN: "vi", TH: "th",
+  IT: "it", NL: "nl", SE: "sv", NO: "no", DK: "da",
+  SA: "ar", AE: "ar", EG: "ar",
 };
 
 function buildSrc(config: WidgetConfig, locale: string): string {
@@ -49,30 +61,25 @@ function buildSrc(config: WidgetConfig, locale: string): string {
   }
 }
 
-interface Props {
-  country: string; // ISO-3166-1 alpha-2 from detectCountry()
+/** Resolve widget locale:
+ * 1. User picked non-English from dropdown → follow that exactly
+ * 2. App defaulted to English (user's language not in dropdown) → use country's native language
+ * 3. Last resort: browser language, then "en" */
+function resolveWidgetLocale(appLocale: string, country: string): string {
+  const mapped = WIDGET_LOCALE[appLocale];
+  if (mapped && mapped !== "en") return mapped;
+  // English or fallback — derive from country so FI→fi, PL→pl regardless of tester's browser
+  return COUNTRY_NATIVE_LOCALE[country] ?? navigator?.language?.split(/[-_]/)[0] ?? "en";
 }
 
-/** Resolve widget locale:
- * - User picked a supported locale from dropdown → use that
- * - App defaulted to "en" (user's language not in dropdown) → use browser language so
- *   e.g. a Finnish user gets the widget in Finnish even though the UI is in English */
-function resolveWidgetLocale(appLocale: string): string {
-  const mapped = WIDGET_LOCALE[appLocale];
-  // Non-English explicit selection — follow the dropdown exactly
-  if (mapped && mapped !== "en") return mapped;
-  // English or unmapped — check browser language so widget stays native
-  if (typeof navigator !== "undefined") {
-    const browserLang = navigator.language.split(/[-_]/)[0].toLowerCase();
-    if (browserLang && browserLang !== "en") return browserLang; // widget auto-supports it
-  }
-  return "en";
+interface Props {
+  country: string; // ISO-3166-1 alpha-2 from detectCountry()
 }
 
 export function CarRentalWidget({ country }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const appLocale = useLocale();
-  const widgetLocale = resolveWidgetLocale(appLocale);
+  const widgetLocale = resolveWidgetLocale(appLocale, country);
   const config = COUNTRY_CONFIG[country] ?? FALLBACK;
 
   useEffect(() => {
@@ -89,7 +96,7 @@ export function CarRentalWidget({ country }: Props) {
     return () => {
       if (container) container.innerHTML = "";
     };
-  }, [config.provider, widgetLocale]); // re-injects when user switches language
+  }, [config.provider, widgetLocale]);
 
   return <div ref={containerRef} className="w-full" />;
 }
