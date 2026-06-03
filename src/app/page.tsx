@@ -1,7 +1,8 @@
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { detectCountry } from "@burrowsoft/shared";
-import { LocalrentWidget } from "@/components/LocalrentWidget";
+import { CarRentalWidget, isLocalrentCountry } from "@/components/CarRentalWidget";
+import { AffiliateCarSearch } from "@/components/AffiliateCarSearch";
 import { POPULAR_LOCATIONS } from "@/lib/search";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -12,8 +13,20 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 };
 
+// Empty search params for the affiliate fallback on the home page
+const EMPTY_PARAMS = {
+  pickupLocation: "",
+  dropoffLocation: "",
+  pickupDate: "",
+  pickupTime: "10:00",
+  dropoffDate: "",
+  dropoffTime: "10:00",
+  driverAge: "30",
+};
+
 export default async function HomePage() {
   const country = detectCountry(await headers() as unknown as Headers);
+  const isLocalrent = isLocalrentCountry(country);
   const t = await getTranslations("hero");
 
   const FEATURES = [
@@ -25,10 +38,10 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero — branding + header search widget */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-rose-500 to-rose-700 py-16 text-white">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-8 text-center">
+      {/* Hero — shown for non-Localrent providers (they have their own compact UI) */}
+      {!isLocalrent && (
+        <section className="relative overflow-hidden bg-gradient-to-br from-rose-500 to-rose-700 py-14 text-white">
+          <div className="mx-auto max-w-5xl px-4 text-center">
             <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" />
               {t("badge")}
@@ -36,7 +49,7 @@ export default async function HomePage() {
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
               {t("title")}
             </h1>
-            <p className="mt-4 text-lg text-rose-100 leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-3 text-lg text-rose-100 leading-relaxed max-w-xl mx-auto">
               {t("subtitle")}
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-4 text-sm text-rose-100">
@@ -45,20 +58,18 @@ export default async function HomePage() {
               <span>{t("trust3")}</span>
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Header / search widget */}
-          <div className="rounded-2xl overflow-hidden bg-white/10 backdrop-blur">
-            <LocalrentWidget country={country} variant="header" />
-          </div>
-        </div>
-      </section>
+      {/* Widget */}
+      <div className={isLocalrent ? "w-full" : "mx-auto max-w-5xl px-4 py-8"}>
+        <CarRentalWidget country={country} />
+      </div>
 
-      {/* Main listing widget */}
-      <section className="py-8">
-        <div className="mx-auto max-w-7xl px-4">
-          <LocalrentWidget country={country} variant="main" />
-        </div>
-      </section>
+      {/* Affiliate fallback — additional booking options */}
+      <div className={isLocalrent ? "mx-auto max-w-7xl px-4" : "mx-auto max-w-5xl px-4 pb-8"}>
+        <AffiliateCarSearch params={EMPTY_PARAMS} variant="below" />
+      </div>
 
       {/* Features */}
       <section className="bg-slate-50 py-16">
