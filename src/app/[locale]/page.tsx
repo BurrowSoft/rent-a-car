@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { detectCountry } from "@burrowsoft/shared";
 import { CarRentalWidget } from "@/components/CarRentalWidget";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
@@ -18,14 +18,20 @@ function getProvider(country: string) {
   return "localrent";
 }
 
-export default async function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const country = detectCountry(await headers() as unknown as Headers);
   const isLocalrent = getProvider(country) === "localrent";
   const t = await getTranslations("hero");
 
   return (
     <>
-      {/* Branded hero — only for non-Localrent providers */}
       {!isLocalrent && (
         <section className="relative overflow-hidden bg-gradient-to-br from-rose-500 to-rose-700 py-14 text-white">
           <div className="mx-auto max-w-5xl px-4 text-center">
@@ -48,7 +54,6 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Widget */}
       <div className={isLocalrent ? "w-full" : "mx-auto max-w-5xl px-4 py-8"}>
         <CarRentalWidget country={country} />
       </div>
