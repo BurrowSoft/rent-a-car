@@ -183,3 +183,20 @@ Don't render `SearchForm` or `ResultsClient` on the home page — the widget rep
 - **Any unlisted country**: Localrent fallback, English
 
 ## Commit and push + fill Reports6.md
+
+---
+
+## Cleanup: remove junk sections from page.tsx
+
+The Localrent widget replaces the entire search experience. The following sections in `src/app/page.tsx` are no longer needed and should be **deleted**:
+
+- **Trust/feature cards** ("ผู้ให้บริการชั้นนำ", "ราคาดีที่สุด", "ไม่มีค่าธรรมเนียมซ่อน", "ยกเลิกฟรี") — fabricated trust badges, remove entirely
+- **Popular destinations grid** ("จุดหมายยอดนิยม") — the IATA code cards (JFK, LAX, BKK, etc.) — remove entirely
+- **Footer region link columns** (อเมริกา, ยุโรป, เอเชีย & แปซิฟิก with city links) — remove entirely
+
+Keep only:
+- The `<CarRentalWidget />` (the Localrent/multi-provider widget)
+- The `<AffiliateCarSearch variant="below" />` if present
+- The main site header and footer (nav + copyright)
+
+The page should be clean: widget fills the viewport, nothing fake below it.
