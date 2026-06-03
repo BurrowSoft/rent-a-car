@@ -1,4 +1,4 @@
-# RentACarMole — TODO6: Replace Search with Localrent Travelpayouts Widget
+# RentACarMole — TODO6: Replace Search with Travelpayouts Widgets (Multi-Provider)
 
 ## Permissions
 Ask the user to enable bypass permissions before starting: `claude --dangerously-skip-permissions`.
@@ -6,37 +6,48 @@ Ask the user to enable bypass permissions before starting: `claude --dangerously
 ## Please fill in Reports6.md when done.
 
 ## Overview
-The current rent-a-car search returns no results (Booking.com cars API is broken). Replace the entire search UI with two Travelpayouts Localrent widgets — a header/search widget and a full listing widget. These work for all users globally, pre-filtered by detected country.
+The current rent-a-car search returns no results. Replace the entire search UI with Travelpayouts car rental widgets — provider selected by detected country. Commission: 7.5–12% (Localrent), 3–8% (Economybookings), varies (QEEQ, AutoEurope).
 
 ---
 
-## Widget scripts
+## Country → Widget mapping
 
-**Header/search widget** (compact search form at top of page):
-```html
-<script async src="https://tpscr.com/content?trs=535682&shmarker=735444&powered_by=true&country={COUNTRY_ID}&lang={LANG}&width=100&background=light&logo=true&header=true&gearbox=false&cars=false&border=true&footer=true&campaign_id=87&promo_id=4322" charset="utf-8"></script>
-```
-
-**Main listing widget** (full car listing with filters):
-```html
-<script async src="//tpscr.com/content?trs=535682&shmarker=735444&locale={LANG}&country={COUNTRY_ID}&powered_by=true&campaign_id=87&promo_id=2466" charset="utf-8"></script>
-```
+| Widget | Countries (ISO) | Locale param |
+|---|---|---|
+| **Localrent** | TH + all others (fallback) | `th` or `en` |
+| **Economybookings** | ES, RU, BR, FR | `es`, `ru`, `pt_BR`, `fr` |
+| **QEEQ** | JP, MX | `jp`, `es` |
+| **AutoEurope** | FI, PL, GB, US | `fi`, `pl`, `en`, `en` |
 
 ---
 
-## Country ID mapping
+## Widget scripts (use `[LOCALE]` and `[COUNTRY_ID]` as placeholders — fill dynamically)
 
-| Country | ID |
-|---|---|
-| Thailand (TH) | 9 |
-| United States (US) | 23 |
-| **All others** | 23 (US as fallback) |
+**Localrent** (Thailand country=9, all others country=23 as fallback):
+```
+https://tpscr.com/content?trs=535682&shmarker=735444&locale=[LOCALE]&country=[COUNTRY_ID]&powered_by=true&campaign_id=87&promo_id=2466
+```
+
+**Economybookings:**
+```
+https://tpscr.com/content?trs=535682&shmarker=735444&locale=[LOCALE]&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&color_text=%23000000&color_input_text=%23000000&color_button_text=%23ffffff&promo_id=4480&campaign_id=10
+```
+
+**QEEQ:**
+```
+https://tpscr.com/content?trs=535682&shmarker=735444&locale=[LOCALE]&powered_by=true&campaign_id=172&promo_id=4850
+```
+
+**AutoEurope:**
+```
+https://tpscr.com/content?trs=535682&shmarker=735444&locale=[LOCALE]&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&promo_id=4362&campaign_id=143
+```
 
 ---
 
 ## Implementation
 
-### 1. Create `src/components/LocalrentWidget.tsx`
+### 1. Create `src/components/CarRentalWidget.tsx`
 
 ```tsx
 "use client";
@@ -44,87 +55,105 @@ The current rent-a-car search returns no results (Booking.com cars API is broken
 import { useEffect, useRef } from "react";
 import { useLocale } from "next-intl";
 
-const COUNTRY_IDS: Record<string, number> = {
-  TH: 9,
-  US: 23,
-};
+type WidgetProvider = "localrent" | "economybookings" | "qeeq" | "autoeurope";
 
-interface Props {
-  country: string;   // ISO code from detectCountry(), e.g. "TH", "US"
-  variant: "header" | "main";
+interface WidgetConfig {
+  provider: WidgetProvider;
+  locale: string;
+  countryId?: number; // Localrent only
 }
 
-export function LocalrentWidget({ country, variant }: Props) {
-  const locale = useLocale();
+// Country → widget provider + locale
+const COUNTRY_CONFIG: Record<string, WidgetConfig> = {
+  TH: { provider: "localrent",       locale: "th",    countryId: 9  },
+  ES: { provider: "economybookings", locale: "es"  },
+  RU: { provider: "economybookings", locale: "ru"  },
+  BR: { provider: "economybookings", locale: "pt_BR" },
+  FR: { provider: "economybookings", locale: "fr"  },
+  JP: { provider: "qeeq",            locale: "jp"  },
+  MX: { provider: "qeeq",            locale: "es"  },
+  FI: { provider: "autoeurope",      locale: "fi"  },
+  PL: { provider: "autoeurope",      locale: "pl"  },
+  GB: { provider: "autoeurope",      locale: "en"  },
+  US: { provider: "autoeurope",      locale: "en"  },
+};
+
+const FALLBACK: WidgetConfig = { provider: "localrent", locale: "en", countryId: 23 };
+
+function buildSrc(config: WidgetConfig): string {
+  const base = "https://tpscr.com/content?trs=535682&shmarker=735444";
+  switch (config.provider) {
+    case "localrent":
+      return `${base}&locale=${config.locale}&country=${config.countryId}&powered_by=true&campaign_id=87&promo_id=2466`;
+    case "economybookings":
+      return `${base}&locale=${config.locale}&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&color_text=%23000000&color_input_text=%23000000&color_button_text=%23ffffff&promo_id=4480&campaign_id=10`;
+    case "qeeq":
+      return `${base}&locale=${config.locale}&powered_by=true&campaign_id=172&promo_id=4850`;
+    case "autoeurope":
+      return `${base}&locale=${config.locale}&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&promo_id=4362&campaign_id=143`;
+  }
+}
+
+interface Props {
+  country: string; // ISO code from detectCountry()
+}
+
+export function CarRentalWidget({ country }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const countryId = COUNTRY_IDS[country] ?? 23;
-  const lang = locale === "th" ? "th" : "en";
+  const config = COUNTRY_CONFIG[country] ?? FALLBACK;
 
   useEffect(() => {
     if (!containerRef.current) return;
+    // Clear any previous widget
+    containerRef.current.innerHTML = "";
 
     const script = document.createElement("script");
     script.async = true;
     script.charset = "utf-8";
-
-    if (variant === "header") {
-      script.src = `https://tpscr.com/content?trs=535682&shmarker=735444&powered_by=true&country=${countryId}&lang=${lang}&width=100&background=light&logo=true&header=true&gearbox=false&cars=false&border=true&footer=true&campaign_id=87&promo_id=4322`;
-    } else {
-      script.src = `https://tpscr.com/content?trs=535682&shmarker=735444&locale=${lang}&country=${countryId}&powered_by=true&campaign_id=87&promo_id=2466`;
-    }
-
+    script.src = buildSrc(config);
     containerRef.current.appendChild(script);
 
     return () => {
-      if (containerRef.current?.contains(script)) {
-        containerRef.current.removeChild(script);
-      }
+      if (containerRef.current) containerRef.current.innerHTML = "";
     };
-  }, [countryId, lang, variant]);
+  }, [config.provider, config.locale]);
 
   return <div ref={containerRef} className="w-full" />;
 }
 ```
 
-### 2. Update the main page (`src/app/page.tsx`)
-
-The page is a server component — read country from headers, pass to widget:
+### 2. Update `src/app/page.tsx`
 
 ```tsx
 import { headers } from "next/headers";
 import { detectCountry } from "@burrowsoft/shared";
-import { LocalrentWidget } from "@/components/LocalrentWidget";
+import { CarRentalWidget } from "@/components/CarRentalWidget";
 
 export default async function HomePage() {
   const country = detectCountry(await headers());
 
   return (
-    <main>
-      {/* Replace existing search form with header widget */}
-      <LocalrentWidget country={country} variant="header" />
-
-      {/* Replace existing results list with main listing widget */}
-      <LocalrentWidget country={country} variant="main" />
+    <main className="mx-auto max-w-5xl px-4 py-8">
+      <CarRentalWidget country={country} />
     </main>
   );
 }
 ```
 
-### 3. Remove or hide old search UI
-- The existing `SearchForm`, `ResultsClient`, `AffiliateCarSearch` components are no longer needed on the home page
-- Keep them in the codebase (don't delete) — they may still be used on `/results` page
-- Just don't render them on the home page `page.tsx`
+### 3. Keep AffiliateCarSearch below the widget
+Render `<AffiliateCarSearch />` below `<CarRentalWidget />` so users have additional booking options after browsing the widget results.
 
-### 4. Keep AffiliateCarSearch as fallback
-On the `/results` page (if it still exists), keep `AffiliateCarSearch` visible below the widget so users have additional booking options.
+### 4. Hide old SearchForm on home page
+Don't render `SearchForm` or `ResultsClient` on the home page — the widget replaces them. Keep the files; the `/results` route may still use them.
 
 ---
 
-## Verify
-- TH locale: widget loads in Thai (`lang=th`), pre-filtered to Thailand (`country=9`)
-- All other countries: widget loads in English, pre-filtered to US (`country=23`)
-- No JS errors in console
-- Both widgets render — header form + main listing
-- Commission tracking: `shmarker=735444` is your affiliate marker — bookings through the widget earn 7.5–12% commission
+## Verify for each provider
+- **TH locale**: Localrent widget, Thai language
+- **ES**: Economybookings widget, Spanish
+- **JP**: QEEQ widget, Japanese
+- **FI**: AutoEurope widget, Finnish
+- **US / fallback**: AutoEurope (US), English
+- **Any unlisted country**: Localrent fallback, English
 
 ## Commit and push + fill Reports6.md
