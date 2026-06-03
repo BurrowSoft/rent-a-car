@@ -102,6 +102,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             crossOrigin="anonymous"
           />
         )}
+        <meta name="fo-verify" content="bbc63628-c7bf-452c-aa36-d70a12ac92ba" />
       </head>
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
