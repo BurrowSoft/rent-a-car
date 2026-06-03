@@ -53,10 +53,26 @@ interface Props {
   country: string; // ISO-3166-1 alpha-2 from detectCountry()
 }
 
+/** Resolve widget locale:
+ * - User picked a supported locale from dropdown → use that
+ * - App defaulted to "en" (user's language not in dropdown) → use browser language so
+ *   e.g. a Finnish user gets the widget in Finnish even though the UI is in English */
+function resolveWidgetLocale(appLocale: string): string {
+  const mapped = WIDGET_LOCALE[appLocale];
+  // Non-English explicit selection — follow the dropdown exactly
+  if (mapped && mapped !== "en") return mapped;
+  // English or unmapped — check browser language so widget stays native
+  if (typeof navigator !== "undefined") {
+    const browserLang = navigator.language.split(/[-_]/)[0].toLowerCase();
+    if (browserLang && browserLang !== "en") return browserLang; // widget auto-supports it
+  }
+  return "en";
+}
+
 export function CarRentalWidget({ country }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const appLocale = useLocale();
-  const widgetLocale = WIDGET_LOCALE[appLocale] ?? "en";
+  const widgetLocale = resolveWidgetLocale(appLocale);
   const config = COUNTRY_CONFIG[country] ?? FALLBACK;
 
   useEffect(() => {
