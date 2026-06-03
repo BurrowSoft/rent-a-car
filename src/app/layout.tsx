@@ -127,34 +127,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
           <footer className="mt-16 border-t border-slate-200 bg-white">
             <div className="mx-auto max-w-7xl px-4 py-8">
-              <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-                <div>
-                  <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{t("popular")}</h3>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li><span className="text-slate-400">New York</span></li>
-                    <li><span className="text-slate-400">Los Angeles</span></li>
-                    <li><span className="text-slate-400">Miami</span></li>
-                    <li><span className="text-slate-400">London</span></li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{t("europe")}</h3>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li><span className="text-slate-400">Paris</span></li>
-                    <li><span className="text-slate-400">Barcelona</span></li>
-                    <li><span className="text-slate-400">Rome</span></li>
-                    <li><span className="text-slate-400">Amsterdam</span></li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{t("asiaPacific")}</h3>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li><span className="text-slate-400">Dubai</span></li>
-                    <li><span className="text-slate-400">Bangkok</span></li>
-                    <li><span className="text-slate-400">Tokyo</span></li>
-                    <li><span className="text-slate-400">Sydney</span></li>
-                  </ul>
-                </div>
+              <div className="flex flex-wrap gap-6">
                 <div>
                   <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{t("help")}</h3>
                   <ul className="space-y-2 text-sm text-slate-600">
