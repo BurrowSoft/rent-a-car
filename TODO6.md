@@ -122,26 +122,52 @@ export function CarRentalWidget({ country }: Props) {
 }
 ```
 
-### 2. Update `src/app/page.tsx`
+### 2. `CarRentalWidget` — Localrent only renders the main listing widget (no header)
+The Localrent listing widget is a complete standalone UI — no need for the separate header/search widget on top of it.
+The `variant: "header"` concept is removed. Only one script is injected per country.
+
+### 3. Update `src/app/page.tsx` — conditional hero background
+
+The red hero background only makes sense for non-Localrent widgets (Economybookings, QEEQ, AutoEurope have their own compact UI that benefits from a branded wrapper). For Localrent, show no background — the widget is a complete page itself.
 
 ```tsx
 import { headers } from "next/headers";
 import { detectCountry } from "@burrowsoft/shared";
 import { CarRentalWidget } from "@/components/CarRentalWidget";
 
+// Helper to detect which provider will be used (mirrors COUNTRY_CONFIG logic)
+function getProvider(country: string) {
+  const economybookings = ["ES","RU","BR","FR"];
+  const qeeq = ["JP","MX"];
+  const autoeurope = ["FI","PL","GB","US"];
+  if (economybookings.includes(country)) return "economybookings";
+  if (qeeq.includes(country)) return "qeeq";
+  if (autoeurope.includes(country)) return "autoeurope";
+  return "localrent";
+}
+
 export default async function HomePage() {
   const country = detectCountry(await headers());
+  const provider = getProvider(country);
+  const isLocalrent = provider === "localrent";
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
-      <CarRentalWidget country={country} />
-    </main>
+    <>
+      {/* Hero — only show for non-Localrent providers */}
+      {!isLocalrent && (
+        <section className="bg-rose-500 px-4 py-12 text-center text-white">
+          {/* existing hero title, subtitle, trust badges */}
+        </section>
+      )}
+
+      <main className={isLocalrent ? "w-full" : "mx-auto max-w-5xl px-4 py-8"}>
+        <CarRentalWidget country={country} />
+        <AffiliateCarSearch variant="below" params={{}} />
+      </main>
+    </>
   );
 }
 ```
-
-### 3. Keep AffiliateCarSearch below the widget
-Render `<AffiliateCarSearch />` below `<CarRentalWidget />` so users have additional booking options after browsing the widget results.
 
 ### 4. Hide old SearchForm on home page
 Don't render `SearchForm` or `ResultsClient` on the home page — the widget replaces them. Keep the files; the `/results` route may still use them.
