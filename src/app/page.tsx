@@ -2,7 +2,6 @@ import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { detectCountry } from "@burrowsoft/shared";
 import { CarRentalWidget } from "@/components/CarRentalWidget";
-import { AffiliateCarSearch } from "@/components/AffiliateCarSearch";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -18,16 +17,6 @@ function getProvider(country: string) {
   if (["FI", "PL", "GB", "US"].includes(country)) return "autoeurope";
   return "localrent";
 }
-
-const EMPTY_PARAMS = {
-  pickupLocation: "",
-  dropoffLocation: "",
-  pickupDate: "",
-  pickupTime: "10:00",
-  dropoffDate: "",
-  dropoffTime: "10:00",
-  driverAge: "30",
-};
 
 export default async function HomePage() {
   const country = detectCountry(await headers() as unknown as Headers);
@@ -59,14 +48,9 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Widget */}
-      <div className={isLocalrent ? "w-full" : "mx-auto max-w-5xl px-4 py-8"}>
+      {/* Widget — clear sticky header with mt-16 */}
+      <div className={isLocalrent ? "w-full mt-16" : "mx-auto max-w-5xl px-4 py-8 mt-16"}>
         <CarRentalWidget country={country} />
-      </div>
-
-      {/* Affiliate fallback */}
-      <div className={isLocalrent ? "mx-auto max-w-7xl px-4 pb-10" : "mx-auto max-w-5xl px-4 pb-10"}>
-        <AffiliateCarSearch params={EMPTY_PARAMS} variant="below" />
       </div>
     </>
   );
