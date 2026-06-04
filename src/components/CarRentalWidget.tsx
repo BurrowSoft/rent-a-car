@@ -3,92 +3,64 @@
 import { useEffect, useRef } from "react";
 import { useLocale } from "next-intl";
 
-type WidgetProvider = "localrent" | "economybookings" | "qeeq" | "autoeurope";
+type WidgetProvider = "localrent" | "economybookings" | "qeeq";
 
 interface WidgetConfig {
   provider: WidgetProvider;
-  countryId?: number; // Localrent only
+  /** Localrent: pre-selects the country in the widget UI */
+  countryId: number;
+  /** Widget display language */
+  lang: string;
 }
 
-const COUNTRY_CONFIG: Record<string, WidgetConfig> = {
-  TH: { provider: "localrent",       countryId: 9  },
-  ES: { provider: "economybookings"                 },
-  RU: { provider: "economybookings"                 },
-  BR: { provider: "economybookings"                 },
-  FR: { provider: "economybookings"                 },
-  JP: { provider: "qeeq"                            },
-  MX: { provider: "qeeq"                            },
-  FI: { provider: "autoeurope"                      },
-  PL: { provider: "autoeurope"                      },
-  GB: { provider: "autoeurope"                      },
-  US: { provider: "autoeurope"                      },
+/**
+ * Locale → widget config.
+ * Driven by URL locale so this works at SSG time — no IP-country server header needed.
+ */
+const LOCALE_CONFIG: Record<string, WidgetConfig> = {
+  th:      { provider: "localrent",       countryId: 9,  lang: "th" },
+  es:      { provider: "economybookings", countryId: 23, lang: "es" },
+  ru:      { provider: "economybookings", countryId: 23, lang: "ru" },
+  "pt-BR": { provider: "economybookings", countryId: 23, lang: "pt" },
+  fr:      { provider: "economybookings", countryId: 23, lang: "fr" },
+  ja:      { provider: "qeeq",            countryId: 23, lang: "ja" },
+  zh:      { provider: "localrent",       countryId: 23, lang: "zh" },
+  "zh-TW": { provider: "localrent",       countryId: 23, lang: "zh" },
+  ar:      { provider: "localrent",       countryId: 23, lang: "ar" },
+  de:      { provider: "localrent",       countryId: 23, lang: "de" },
+  id:      { provider: "localrent",       countryId: 23, lang: "id" },
+  ko:      { provider: "localrent",       countryId: 23, lang: "ko" },
+  it:      { provider: "localrent",       countryId: 23, lang: "it" },
+  vi:      { provider: "localrent",       countryId: 23, lang: "vi" },
+  en:      { provider: "localrent",       countryId: 23, lang: "en" },
 };
 
-const FALLBACK: WidgetConfig = { provider: "localrent", countryId: 23 };
+const FALLBACK: WidgetConfig = { provider: "localrent", countryId: 23, lang: "en" };
 
-// Map next-intl locale → widget locale (explicit dropdown selection)
-const WIDGET_LOCALE: Record<string, string> = {
-  en: "en", th: "th", es: "es", ru: "ru",
-  "pt-BR": "pt", fr: "fr", ja: "ja", zh: "zh",
-  "zh-TW": "zh", ar: "ar", de: "de", id: "id",
-  ko: "ko", it: "it", vi: "vi",
-};
-
-// ISO country → native widget locale (used when dropdown defaulted to English)
-const COUNTRY_NATIVE_LOCALE: Record<string, string> = {
-  FI: "fi", PL: "pl", DE: "de", AT: "de", CH: "de",
-  FR: "fr", BE: "fr", LU: "fr", MC: "fr",
-  ES: "es", MX: "es", AR: "es", CO: "es", CL: "es",
-  BR: "pt", PT: "pt",
-  RU: "ru", UA: "ru", KZ: "ru", BY: "ru",
-  JP: "ja", CN: "zh", TW: "zh", HK: "zh",
-  KR: "ko", ID: "id", VN: "vi", TH: "th",
-  IT: "it", NL: "nl", SE: "sv", NO: "no", DK: "da",
-  SA: "ar", AE: "ar", EG: "ar",
-};
-
-function buildSrc(config: WidgetConfig, locale: string): string {
+function buildSrc({ provider, countryId, lang }: WidgetConfig): string {
   const base = "https://tpscr.com/content?trs=535682&shmarker=735444";
-  switch (config.provider) {
+  switch (provider) {
     case "localrent":
-      return `${base}&locale=${locale}&country=${config.countryId}&powered_by=true&campaign_id=87&promo_id=2266`;
+      return `${base}&locale=${lang}&country=${countryId}&powered_by=true&campaign_id=87&promo_id=2466`;
     case "economybookings":
-      return `${base}&locale=${locale}&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&color_text=%23000000&color_input_text=%23000000&color_button_text=%23ffffff&promo_id=4480&campaign_id=10`;
+      return `${base}&locale=${lang}&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&color_text=%23000000&color_input_text=%23000000&color_button_text=%23ffffff&promo_id=4480&campaign_id=10`;
     case "qeeq":
-      return `${base}&locale=${locale}&powered_by=true&campaign_id=172&promo_id=4850`;
-    case "autoeurope":
-      return `${base}&locale=${locale}&powered_by=true&border_radius=5&plain=true&show_logo=true&color_background=%230b2033&color_button=%23e8b917&promo_id=4362&campaign_id=143`;
+      return `${base}&locale=${lang}&powered_by=true&campaign_id=172&promo_id=4850`;
   }
 }
 
-/** Resolve widget locale:
- * 1. User picked non-English from dropdown → follow that exactly
- * 2. App defaulted to English (user's language not in dropdown) → use country's native language
- * 3. Last resort: browser language, then "en" */
-function resolveWidgetLocale(appLocale: string, country: string): string {
-  const mapped = WIDGET_LOCALE[appLocale];
-  if (mapped && mapped !== "en") return mapped;
-  // English or fallback — derive from country so FI→fi, PL→pl regardless of tester's browser
-  return COUNTRY_NATIVE_LOCALE[country] ?? navigator?.language?.split(/[-_]/)[0] ?? "en";
-}
-
-interface Props {
-  country: string; // ISO-3166-1 alpha-2 from detectCountry()
-}
-
-export function CarRentalWidget({ country }: Props) {
+export function CarRentalWidget() {
   const containerRef = useRef<HTMLDivElement>(null);
   // Tracks the src that was last loaded so we never re-wipe on URL-param remounts
   const loadedSrcRef = useRef<string | null>(null);
-  const appLocale = useLocale();
-  const widgetLocale = resolveWidgetLocale(appLocale, country);
-  const config = COUNTRY_CONFIG[country] ?? FALLBACK;
+  const locale = useLocale();
+  const config = LOCALE_CONFIG[locale] ?? FALLBACK;
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const src = buildSrc(config, widgetLocale);
+    const src = buildSrc(config);
 
     // Same widget already loaded — tp-em.com may have changed the URL without
     // changing the config; do nothing so the rendered iframe isn't destroyed.
@@ -106,7 +78,7 @@ export function CarRentalWidget({ country }: Props) {
 
     // No innerHTML wipe on cleanup: wiping here would destroy the rendered widget
     // whenever tp-em.com appends ?init_marker=... to the URL (causing a remount).
-  }, [config.provider, widgetLocale]);
+  }, [config]);
 
   return <div ref={containerRef} className="w-full" />;
 }

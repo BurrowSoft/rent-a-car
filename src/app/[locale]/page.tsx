@@ -1,6 +1,4 @@
-import { headers } from "next/headers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { detectCountry } from "@burrowsoft/shared";
 import { CarRentalWidget } from "@/components/CarRentalWidget";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -11,12 +9,8 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 };
 
-function getProvider(country: string) {
-  if (["ES", "RU", "BR", "FR"].includes(country)) return "economybookings";
-  if (["JP", "MX"].includes(country)) return "qeeq";
-  if (["FI", "PL", "GB", "US"].includes(country)) return "autoeurope";
-  return "localrent";
-}
+// Locales that use non-Localrent widgets (show hero branding above the widget)
+const NON_LOCALRENT = new Set(["es", "ru", "pt-BR", "fr", "ja"]);
 
 export default async function HomePage({
   params,
@@ -26,8 +20,7 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const country = detectCountry(await headers() as unknown as Headers);
-  const isLocalrent = getProvider(country) === "localrent";
+  const isLocalrent = !NON_LOCALRENT.has(locale);
   const t = await getTranslations("hero");
 
   return (
@@ -55,7 +48,7 @@ export default async function HomePage({
       )}
 
       <div className={isLocalrent ? "w-full" : "mx-auto max-w-5xl px-4 py-8"}>
-        <CarRentalWidget country={country} />
+        <CarRentalWidget />
       </div>
     </>
   );
