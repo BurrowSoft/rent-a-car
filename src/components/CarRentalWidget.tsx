@@ -66,7 +66,7 @@ export function CarRentalWidget() {
 
     observerRef.current = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setVisible(true);
           observerRef.current?.disconnect();
         }
