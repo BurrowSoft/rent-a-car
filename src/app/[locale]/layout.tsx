@@ -104,6 +104,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={fontClass}>
       <head>
+        {/* Travelpayouts affiliate tracking */}
+        <script async src="https://tp-em.com/NTM1Njgy.js?t=535682" />
         {process.env.NEXT_PUBLIC_ADSENSE_ID && (
           <script
             async
