@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 
 type WidgetProvider = "localrent" | "economybookings" | "qeeq";
@@ -13,10 +13,6 @@ interface WidgetConfig {
   lang: string;
 }
 
-/**
- * Locale → widget config.
- * Driven by URL locale so this works at SSG time — no IP-country server header needed.
- */
 const LOCALE_CONFIG: Record<string, WidgetConfig> = {
   th:      { provider: "localrent",       countryId: 9,  lang: "th" },
   es:      { provider: "economybookings", countryId: 23, lang: "es" },
@@ -49,24 +45,48 @@ function buildSrc({ provider, countryId, lang }: WidgetConfig): string {
   }
 }
 
+function WidgetSkeleton() {
+  return (
+    <div className="w-full rounded-xl bg-slate-100 animate-pulse" style={{ minHeight: 220 }} />
+  );
+}
+
 export function CarRentalWidget() {
   const containerRef = useRef<HTMLDivElement>(null);
-  // Tracks the src that was last loaded so we never re-wipe on URL-param remounts
   const loadedSrcRef = useRef<string | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
   const locale = useLocale();
   const config = LOCALE_CONFIG[locale] ?? FALLBACK;
+  const [visible, setVisible] = useState(false);
 
+  // Observe scroll-into-view before loading the widget script
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    observerRef.current = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observerRef.current?.disconnect();
+        }
+      },
+      { rootMargin: "300px" } // start loading 300px before entering viewport
+    );
+    observerRef.current.observe(el);
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
+  // Inject widget script once visible
+  useEffect(() => {
+    if (!visible) return;
     const container = containerRef.current;
     if (!container) return;
 
     const src = buildSrc(config);
-
-    // Same widget already loaded — tp-em.com may have changed the URL without
-    // changing the config; do nothing so the rendered iframe isn't destroyed.
     if (loadedSrcRef.current === src) return;
 
-    // Config changed (different provider or locale) — clear old widget and reload.
     container.innerHTML = "";
     loadedSrcRef.current = src;
 
@@ -75,10 +95,11 @@ export function CarRentalWidget() {
     script.charset = "utf-8";
     script.src = src;
     container.appendChild(script);
+  }, [visible, config]);
 
-    // No innerHTML wipe on cleanup: wiping here would destroy the rendered widget
-    // whenever tp-em.com appends ?init_marker=... to the URL (causing a remount).
-  }, [config]);
-
-  return <div ref={containerRef} className="w-full" />;
+  return (
+    <div ref={containerRef} className="w-full">
+      {!visible && <WidgetSkeleton />}
+    </div>
+  );
 }
