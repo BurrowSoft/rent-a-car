@@ -78,6 +78,8 @@ interface Props {
 
 export function CarRentalWidget({ country }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+  // Tracks the src that was last loaded so we never re-wipe on URL-param remounts
+  const loadedSrcRef = useRef<string | null>(null);
   const appLocale = useLocale();
   const widgetLocale = resolveWidgetLocale(appLocale, country);
   const config = COUNTRY_CONFIG[country] ?? FALLBACK;
@@ -85,17 +87,25 @@ export function CarRentalWidget({ country }: Props) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    const src = buildSrc(config, widgetLocale);
+
+    // Same widget already loaded — tp-em.com may have changed the URL without
+    // changing the config; do nothing so the rendered iframe isn't destroyed.
+    if (loadedSrcRef.current === src) return;
+
+    // Config changed (different provider or locale) — clear old widget and reload.
     container.innerHTML = "";
+    loadedSrcRef.current = src;
 
     const script = document.createElement("script");
     script.async = true;
     script.charset = "utf-8";
-    script.src = buildSrc(config, widgetLocale);
+    script.src = src;
     container.appendChild(script);
 
-    return () => {
-      if (container) container.innerHTML = "";
-    };
+    // No innerHTML wipe on cleanup: wiping here would destroy the rendered widget
+    // whenever tp-em.com appends ?init_marker=... to the URL (causing a remount).
   }, [config.provider, widgetLocale]);
 
   return <div ref={containerRef} className="w-full" />;
