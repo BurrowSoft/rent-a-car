@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import {
   Sarabun,
   Noto_Sans_JP,
@@ -134,9 +135,16 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <header className="border-b border-slate-200 bg-white">
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold text-rose-500">
-                <span aria-hidden>🚗</span>
-                {tn("home")}
+              <Link href="/" className="flex items-center gap-2.5">
+                <Image
+                  src="/mascot.svg"
+                  alt={SITE_NAME}
+                  width={36}
+                  height={36}
+                  className="shrink-0"
+                  priority
+                />
+                <span className="text-lg font-bold tracking-tight">{SITE_NAME}</span>
               </Link>
               <div className="flex items-center gap-3">
                 <span className="hidden sm:block text-xs text-slate-400">{tn("tagline")}</span>
