@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "최고의 공급업체에서 렌터카 비교" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "최고의 공급업체에서 렌터카 비교"
+  },
   "hero": {
     "title": "완벽한 렌터카를 찾아보세요.",
     "subtitle": "전 세계 렌터카를 비교하고 예약하세요. 숨겨진 수수료 없이 최고의 공급업체에서 최상의 딜을.",
     "badge": "500개 이상의 렌터카 업체 비교",
-    "trust1": "✓ 무료 취소", "trust2": "✓ 신용카드 수수료 없음", "trust3": "✓ 24/7 지원",
-    "feature1Title": "최고의 공급업체", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt 등 — 한 번의 검색으로 비교.",
-    "feature2Title": "최저가", "feature2Body": "모든 공급업체의 요금을 비교하여 항상 가장 저렴한 가격을 제공합니다.",
-    "feature3Title": "숨겨진 수수료 없음", "feature3Body": "표시된 가격에는 세금과 표준 보험이 포함됩니다. 놀라운 추가 비용 없음.",
-    "feature4Title": "무료 취소", "feature4Body": "대부분의 예약은 픽업 48시간 전까지 무료로 취소할 수 있습니다.",
+    "trust1": "✓ 무료 취소",
+    "trust2": "✓ 신용카드 수수료 없음",
+    "trust3": "✓ 24/7 지원",
+    "feature1Title": "최고의 공급업체",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt 등 — 한 번의 검색으로 비교.",
+    "feature2Title": "최저가",
+    "feature2Body": "모든 공급업체의 요금을 비교하여 항상 가장 저렴한 가격을 제공합니다.",
+    "feature3Title": "숨겨진 수수료 없음",
+    "feature3Body": "표시된 가격에는 세금과 표준 보험이 포함됩니다. 놀라운 추가 비용 없음.",
+    "feature4Title": "무료 취소",
+    "feature4Body": "대부분의 예약은 픽업 48시간 전까지 무료로 취소할 수 있습니다.",
     "popularTitle": "인기 목적지"
   },
   "search": {
-    "pickup": "픽업 장소", "pickupPlaceholder": "도시, 공항 또는 주소",
-    "dropoff": "반납 장소", "sameLocation": "같은 장소에서 반납",
-    "pickupDate": "픽업 날짜", "pickupTime": "픽업 시간",
-    "dropoffDate": "반납 날짜", "dropoffTime": "반납 시간",
-    "driverAge": "운전자 나이", "ageUnit": "세", "submit": "렌터카 검색 →"
+    "pickup": "픽업 장소",
+    "pickupPlaceholder": "도시, 공항 또는 주소",
+    "dropoff": "반납 장소",
+    "sameLocation": "같은 장소에서 반납",
+    "pickupDate": "픽업 날짜",
+    "pickupTime": "픽업 시간",
+    "dropoffDate": "반납 날짜",
+    "dropoffTime": "반납 시간",
+    "driverAge": "운전자 나이",
+    "ageUnit": "세",
+    "submit": "렌터카 검색 →"
   },
   "results": {
-    "carsIn": "{location}의 렌터카", "found": "{count}개의 결과",
+    "carsIn": "{location}의 렌터카",
+    "found": "{count}개의 결과",
     "noneFound": "렌터카를 찾을 수 없습니다. 다른 날짜나 장소를 시도해 보세요.",
-    "newSearch": "← 새 검색", "dropoffLabel": "반납: {location}",
-    "driverAgeLabel": "운전자 나이 {age}세", "pricesAsOf": "{time} 기준 가격",
-    "fetchingPrices": "가격 업데이트 중…", "perDay": "1일",
-    "bookOn": "{provider}에서 예약", "cheapest": "최저가 옵션",
-    "comparePrices": "가격 비교 →", "seats": "{count}인승",
-    "doors": "{count}도어", "automatic": "자동", "manual": "수동",
-    "ac": "에어컨", "luggage": "대{large}개 / 소{small}개 짐"
+    "newSearch": "← 새 검색",
+    "dropoffLabel": "반납: {location}",
+    "driverAgeLabel": "운전자 나이 {age}세",
+    "pricesAsOf": "{time} 기준 가격",
+    "fetchingPrices": "가격 업데이트 중…",
+    "perDay": "1일",
+    "bookOn": "{provider}에서 예약",
+    "cheapest": "최저가 옵션",
+    "comparePrices": "가격 비교 →",
+    "seats": "{count}인승",
+    "doors": "{count}도어",
+    "automatic": "자동",
+    "manual": "수동",
+    "ac": "에어컨",
+    "luggage": "대{large}개 / 소{small}개 짐"
   },
   "affiliate": {
-    "compareOn": "주요 사이트에서 비교", "alsoCompare": "다른 곳에서도 비교",
-    "title": "{location}에서 렌터카 찾기", "moreOptions": "더 많은 옵션을 찾고 계신가요?",
+    "compareOn": "주요 사이트에서 비교",
+    "alsoCompare": "다른 곳에서도 비교",
+    "title": "{location}에서 렌터카 찾기",
+    "moreOptions": "더 많은 옵션을 찾고 계신가요?",
     "subtitle": "최대 렌터카 플랫폼에서 직접 검색하여 항상 실제 가격을 제공합니다.",
     "moreSites": "더 많은 플랫폼에서 가격을 비교하여 최고의 딜을 찾아보세요.",
     "note": "검색 정보가 미리 입력된 파트너 사이트가 열립니다 · 무료"
   },
   "overlay": {
-    "searching": "이용 가능한 렌터카 검색 중…", "contacting": "공급업체 연락 중…",
-    "preparing": "결과 준비 중…", "loading": "{provider}에서 렌터카 불러오는 중…",
-    "done": "{provider}", "unavailable": "{provider} 이용 불가", "fetchingPrices": "가격 업데이트 중…"
+    "searching": "이용 가능한 렌터카 검색 중…",
+    "contacting": "공급업체 연락 중…",
+    "preparing": "결과 준비 중…",
+    "loading": "{provider}에서 렌터카 불러오는 중…",
+    "done": "{provider}",
+    "unavailable": "{provider} 이용 불가",
+    "fetchingPrices": "가격 업데이트 중…"
   },
   "footer": {
-    "popular": "인기", "europe": "유럽", "asiaPacific": "아시아 및 태평양", "help": "도움말",
-    "insurance": "보험 정보", "cancellation": "취소 정책",
+    "popular": "인기",
+    "europe": "유럽",
+    "asiaPacific": "아시아 및 태평양",
+    "help": "도움말",
+    "insurance": "보험 정보",
+    "cancellation": "취소 정책",
     "tagline": "깊이 파고들어 솔루션을 구축합니다.",
     "copyright": "© 2025 BurrowSoft. 모든 권리 보유."
+  },
+  "noAds": {
+    "tagline": "깔끔한 검색 · 광고 없음 · 가입 불필요"
   }
 }

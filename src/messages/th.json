@@ -80,5 +80,8 @@
     "cancellation": "นโยบายการยกเลิก",
     "tagline": "ค้นหาลึก สร้างสรรค์โซลูชัน",
     "copyright": "© 2025 BurrowSoft. All rights reserved."
+  },
+  "noAds": {
+    "tagline": "ค้นหาสะอาด ไม่มีโฆษณา ไม่ต้องสมัคร"
   }
 }

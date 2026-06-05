@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "Mietwagen der besten Anbieter vergleichen" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "Mietwagen der besten Anbieter vergleichen"
+  },
   "hero": {
     "title": "Finden Sie Ihr perfektes Mietauto.",
     "subtitle": "Mietwagen weltweit vergleichen und buchen. Die besten Angebote von Top-Anbietern — ohne versteckte Kosten.",
     "badge": "Über 500 Mietwagenanbieter vergleichen",
-    "trust1": "✓ Kostenlose Stornierung", "trust2": "✓ Keine Kreditkartengebühren", "trust3": "✓ 24/7-Support",
-    "feature1Title": "Top-Anbieter", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt und mehr — alles in einer Suche.",
-    "feature2Title": "Bester Preis", "feature2Body": "Wir vergleichen Preise aller Anbieter, damit Sie immer den günstigsten Tarif erhalten.",
-    "feature3Title": "Keine versteckten Kosten", "feature3Body": "Der Preis enthält Steuern und Standardversicherung. Keine Überraschungen.",
-    "feature4Title": "Kostenlose Stornierung", "feature4Body": "Die meisten Buchungen können bis 48 Stunden vor Abholung kostenlos storniert werden.",
+    "trust1": "✓ Kostenlose Stornierung",
+    "trust2": "✓ Keine Kreditkartengebühren",
+    "trust3": "✓ 24/7-Support",
+    "feature1Title": "Top-Anbieter",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt und mehr — alles in einer Suche.",
+    "feature2Title": "Bester Preis",
+    "feature2Body": "Wir vergleichen Preise aller Anbieter, damit Sie immer den günstigsten Tarif erhalten.",
+    "feature3Title": "Keine versteckten Kosten",
+    "feature3Body": "Der Preis enthält Steuern und Standardversicherung. Keine Überraschungen.",
+    "feature4Title": "Kostenlose Stornierung",
+    "feature4Body": "Die meisten Buchungen können bis 48 Stunden vor Abholung kostenlos storniert werden.",
     "popularTitle": "Beliebte Reiseziele"
   },
   "search": {
-    "pickup": "Abholort", "pickupPlaceholder": "Stadt, Flughafen oder Adresse",
-    "dropoff": "Rückgabeort", "sameLocation": "Am selben Ort zurückgeben",
-    "pickupDate": "Abholdatum", "pickupTime": "Abholzeit",
-    "dropoffDate": "Rückgabedatum", "dropoffTime": "Rückgabezeit",
-    "driverAge": "Alter des Fahrers", "ageUnit": "Jahre", "submit": "Mietwagen suchen →"
+    "pickup": "Abholort",
+    "pickupPlaceholder": "Stadt, Flughafen oder Adresse",
+    "dropoff": "Rückgabeort",
+    "sameLocation": "Am selben Ort zurückgeben",
+    "pickupDate": "Abholdatum",
+    "pickupTime": "Abholzeit",
+    "dropoffDate": "Rückgabedatum",
+    "dropoffTime": "Rückgabezeit",
+    "driverAge": "Alter des Fahrers",
+    "ageUnit": "Jahre",
+    "submit": "Mietwagen suchen →"
   },
   "results": {
-    "carsIn": "Mietwagen in {location}", "found": "{count} Ergebnis{s} gefunden",
+    "carsIn": "Mietwagen in {location}",
+    "found": "{count} Ergebnis{s} gefunden",
     "noneFound": "Keine Mietwagen gefunden. Bitte andere Daten oder Ort versuchen.",
-    "newSearch": "← Neue Suche", "dropoffLabel": "Rückgabe: {location}",
-    "driverAgeLabel": "Fahrer {age} Jahre", "pricesAsOf": "Preise vom {time}",
-    "fetchingPrices": "Preise werden aktualisiert…", "perDay": "pro Tag",
-    "bookOn": "Bei {provider} buchen", "cheapest": "Günstigste Option",
-    "comparePrices": "Preise vergleichen →", "seats": "{count} Sitze",
-    "doors": "{count} Türen", "automatic": "Automatik", "manual": "Schaltung",
-    "ac": "Klimaanlage", "luggage": "{large}G / {small}K Koffer"
+    "newSearch": "← Neue Suche",
+    "dropoffLabel": "Rückgabe: {location}",
+    "driverAgeLabel": "Fahrer {age} Jahre",
+    "pricesAsOf": "Preise vom {time}",
+    "fetchingPrices": "Preise werden aktualisiert…",
+    "perDay": "pro Tag",
+    "bookOn": "Bei {provider} buchen",
+    "cheapest": "Günstigste Option",
+    "comparePrices": "Preise vergleichen →",
+    "seats": "{count} Sitze",
+    "doors": "{count} Türen",
+    "automatic": "Automatik",
+    "manual": "Schaltung",
+    "ac": "Klimaanlage",
+    "luggage": "{large}G / {small}K Koffer"
   },
   "affiliate": {
-    "compareOn": "Auf den besten Seiten vergleichen", "alsoCompare": "Auch vergleichen auf",
-    "title": "Mietwagen in {location} finden", "moreOptions": "Mehr Optionen gesucht?",
+    "compareOn": "Auf den besten Seiten vergleichen",
+    "alsoCompare": "Auch vergleichen auf",
+    "title": "Mietwagen in {location} finden",
+    "moreOptions": "Mehr Optionen gesucht?",
     "subtitle": "Wir suchen direkt auf den größten Mietwagenplattformen, damit Sie immer den echten Preis erhalten.",
     "moreSites": "Preise auf weiteren Plattformen vergleichen, um das beste Angebot zu finden.",
     "note": "Öffnet die Partnerwebsite mit Ihren vorausgefüllten Suchdaten · Kostenlos"
   },
   "overlay": {
-    "searching": "Verfügbare Mietwagen werden gesucht…", "contacting": "Anbieter werden kontaktiert…",
-    "preparing": "Ergebnisse werden vorbereitet…", "loading": "Mietwagen von {provider} werden geladen…",
-    "done": "{provider}", "unavailable": "{provider} nicht verfügbar", "fetchingPrices": "Preise werden aktualisiert…"
+    "searching": "Verfügbare Mietwagen werden gesucht…",
+    "contacting": "Anbieter werden kontaktiert…",
+    "preparing": "Ergebnisse werden vorbereitet…",
+    "loading": "Mietwagen von {provider} werden geladen…",
+    "done": "{provider}",
+    "unavailable": "{provider} nicht verfügbar",
+    "fetchingPrices": "Preise werden aktualisiert…"
   },
   "footer": {
-    "popular": "Beliebt", "europe": "Europa", "asiaPacific": "Asien & Pazifik", "help": "Hilfe",
-    "insurance": "Versicherungsinfo", "cancellation": "Stornierungsbedingungen",
+    "popular": "Beliebt",
+    "europe": "Europa",
+    "asiaPacific": "Asien & Pazifik",
+    "help": "Hilfe",
+    "insurance": "Versicherungsinfo",
+    "cancellation": "Stornierungsbedingungen",
     "tagline": "Tief graben. Lösungen bauen.",
     "copyright": "© 2025 BurrowSoft. Alle Rechte vorbehalten."
+  },
+  "noAds": {
+    "tagline": "Saubere Suche. Keine Werbung. Kein Konto."
   }
 }

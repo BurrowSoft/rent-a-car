@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "So sánh xe từ các nhà cung cấp hàng đầu" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "So sánh xe từ các nhà cung cấp hàng đầu"
+  },
   "hero": {
     "title": "Tìm chiếc xe thuê hoàn hảo của bạn.",
     "subtitle": "So sánh và đặt thuê xe trên toàn thế giới. Ưu đãi tốt nhất từ các nhà cung cấp hàng đầu — không phí ẩn.",
     "badge": "So sánh hơn 500 công ty cho thuê xe",
-    "trust1": "✓ Hủy miễn phí", "trust2": "✓ Không phí thẻ tín dụng", "trust3": "✓ Hỗ trợ 24/7",
-    "feature1Title": "Nhà cung cấp hàng đầu", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt và nhiều hơn — tất cả trong một tìm kiếm.",
-    "feature2Title": "Giá tốt nhất", "feature2Body": "Chúng tôi so sánh giá của tất cả nhà cung cấp để bạn luôn có giá thấp nhất.",
-    "feature3Title": "Không phí ẩn", "feature3Body": "Giá đã bao gồm thuế và bảo hiểm tiêu chuẩn. Không có bất ngờ.",
-    "feature4Title": "Hủy miễn phí", "feature4Body": "Hầu hết đặt chỗ có thể hủy miễn phí đến 48 giờ trước khi nhận xe.",
+    "trust1": "✓ Hủy miễn phí",
+    "trust2": "✓ Không phí thẻ tín dụng",
+    "trust3": "✓ Hỗ trợ 24/7",
+    "feature1Title": "Nhà cung cấp hàng đầu",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt và nhiều hơn — tất cả trong một tìm kiếm.",
+    "feature2Title": "Giá tốt nhất",
+    "feature2Body": "Chúng tôi so sánh giá của tất cả nhà cung cấp để bạn luôn có giá thấp nhất.",
+    "feature3Title": "Không phí ẩn",
+    "feature3Body": "Giá đã bao gồm thuế và bảo hiểm tiêu chuẩn. Không có bất ngờ.",
+    "feature4Title": "Hủy miễn phí",
+    "feature4Body": "Hầu hết đặt chỗ có thể hủy miễn phí đến 48 giờ trước khi nhận xe.",
     "popularTitle": "Điểm đến phổ biến"
   },
   "search": {
-    "pickup": "Điểm nhận xe", "pickupPlaceholder": "Thành phố, sân bay hoặc địa chỉ",
-    "dropoff": "Điểm trả xe", "sameLocation": "Trả xe tại cùng địa điểm",
-    "pickupDate": "Ngày nhận xe", "pickupTime": "Giờ nhận xe",
-    "dropoffDate": "Ngày trả xe", "dropoffTime": "Giờ trả xe",
-    "driverAge": "Tuổi lái xe", "ageUnit": "tuổi", "submit": "Tìm xe thuê →"
+    "pickup": "Điểm nhận xe",
+    "pickupPlaceholder": "Thành phố, sân bay hoặc địa chỉ",
+    "dropoff": "Điểm trả xe",
+    "sameLocation": "Trả xe tại cùng địa điểm",
+    "pickupDate": "Ngày nhận xe",
+    "pickupTime": "Giờ nhận xe",
+    "dropoffDate": "Ngày trả xe",
+    "dropoffTime": "Giờ trả xe",
+    "driverAge": "Tuổi lái xe",
+    "ageUnit": "tuổi",
+    "submit": "Tìm xe thuê →"
   },
   "results": {
-    "carsIn": "Xe tại {location}", "found": "Tìm thấy {count} kết quả",
+    "carsIn": "Xe tại {location}",
+    "found": "Tìm thấy {count} kết quả",
     "noneFound": "Không tìm thấy xe. Hãy thử ngày khác hoặc địa điểm khác.",
-    "newSearch": "← Tìm kiếm mới", "dropoffLabel": "Trả xe: {location}",
-    "driverAgeLabel": "Tuổi lái xe {age}", "pricesAsOf": "Giá lúc {time}",
-    "fetchingPrices": "Đang cập nhật giá…", "perDay": "mỗi ngày",
-    "bookOn": "Đặt trên {provider}", "cheapest": "Lựa chọn rẻ nhất",
-    "comparePrices": "So sánh giá →", "seats": "{count} chỗ ngồi",
-    "doors": "{count} cửa", "automatic": "Tự động", "manual": "Số sàn",
-    "ac": "Điều hòa", "luggage": "{large}L / {small}S vali"
+    "newSearch": "← Tìm kiếm mới",
+    "dropoffLabel": "Trả xe: {location}",
+    "driverAgeLabel": "Tuổi lái xe {age}",
+    "pricesAsOf": "Giá lúc {time}",
+    "fetchingPrices": "Đang cập nhật giá…",
+    "perDay": "mỗi ngày",
+    "bookOn": "Đặt trên {provider}",
+    "cheapest": "Lựa chọn rẻ nhất",
+    "comparePrices": "So sánh giá →",
+    "seats": "{count} chỗ ngồi",
+    "doors": "{count} cửa",
+    "automatic": "Tự động",
+    "manual": "Số sàn",
+    "ac": "Điều hòa",
+    "luggage": "{large}L / {small}S vali"
   },
   "affiliate": {
-    "compareOn": "So sánh trên các trang hàng đầu", "alsoCompare": "Cũng so sánh trên",
-    "title": "Tìm xe tại {location}", "moreOptions": "Tìm kiếm thêm lựa chọn?",
+    "compareOn": "So sánh trên các trang hàng đầu",
+    "alsoCompare": "Cũng so sánh trên",
+    "title": "Tìm xe tại {location}",
+    "moreOptions": "Tìm kiếm thêm lựa chọn?",
     "subtitle": "Chúng tôi tìm kiếm trực tiếp trên các nền tảng thuê xe lớn nhất để bạn luôn có giá thực.",
     "moreSites": "So sánh giá trên nhiều nền tảng hơn để tìm ưu đãi tốt nhất.",
     "note": "Mở trang đối tác với thông tin tìm kiếm đã điền sẵn · Miễn phí"
   },
   "overlay": {
-    "searching": "Đang tìm kiếm xe có sẵn…", "contacting": "Đang liên hệ nhà cung cấp…",
-    "preparing": "Đang chuẩn bị kết quả…", "loading": "Đang tải xe từ {provider}…",
-    "done": "{provider}", "unavailable": "{provider} không khả dụng", "fetchingPrices": "Đang cập nhật giá…"
+    "searching": "Đang tìm kiếm xe có sẵn…",
+    "contacting": "Đang liên hệ nhà cung cấp…",
+    "preparing": "Đang chuẩn bị kết quả…",
+    "loading": "Đang tải xe từ {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} không khả dụng",
+    "fetchingPrices": "Đang cập nhật giá…"
   },
   "footer": {
-    "popular": "Phổ biến", "europe": "Châu Âu", "asiaPacific": "Châu Á & Thái Bình Dương", "help": "Trợ giúp",
-    "insurance": "Thông tin bảo hiểm", "cancellation": "Chính sách hủy",
+    "popular": "Phổ biến",
+    "europe": "Châu Âu",
+    "asiaPacific": "Châu Á & Thái Bình Dương",
+    "help": "Trợ giúp",
+    "insurance": "Thông tin bảo hiểm",
+    "cancellation": "Chính sách hủy",
     "tagline": "Đào sâu. Xây dựng giải pháp.",
     "copyright": "© 2025 BurrowSoft. Đã đăng ký bản quyền."
+  },
+  "noAds": {
+    "tagline": "Tìm kiếm sạch · Không quảng cáo · Không đăng ký"
   }
 }

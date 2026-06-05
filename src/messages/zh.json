@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "比较顶级供应商的租车服务" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "比较顶级供应商的租车服务"
+  },
   "hero": {
     "title": "找到您的完美租车。",
     "subtitle": "在全球范围内比较并预订租车。顶级供应商的最佳优惠 — 无隐藏费用。",
     "badge": "比较500多家租车公司",
-    "trust1": "✓ 免费取消", "trust2": "✓ 无信用卡手续费", "trust3": "✓ 全天候支持",
-    "feature1Title": "顶级供应商", "feature1Body": "Hertz、Avis、Budget、Enterprise、Sixt等 — 一站式搜索。",
-    "feature2Title": "最优价格", "feature2Body": "我们比较所有供应商的价格，确保您获得最低费用。",
-    "feature3Title": "无隐藏费用", "feature3Body": "显示价格含税及标准保险。没有意外费用。",
-    "feature4Title": "免费取消", "feature4Body": "大多数预订可在取车前48小时内免费取消。",
+    "trust1": "✓ 免费取消",
+    "trust2": "✓ 无信用卡手续费",
+    "trust3": "✓ 全天候支持",
+    "feature1Title": "顶级供应商",
+    "feature1Body": "Hertz、Avis、Budget、Enterprise、Sixt等 — 一站式搜索。",
+    "feature2Title": "最优价格",
+    "feature2Body": "我们比较所有供应商的价格，确保您获得最低费用。",
+    "feature3Title": "无隐藏费用",
+    "feature3Body": "显示价格含税及标准保险。没有意外费用。",
+    "feature4Title": "免费取消",
+    "feature4Body": "大多数预订可在取车前48小时内免费取消。",
     "popularTitle": "热门目的地"
   },
   "search": {
-    "pickup": "取车地点", "pickupPlaceholder": "城市、机场或地址",
-    "dropoff": "还车地点", "sameLocation": "在同一地点还车",
-    "pickupDate": "取车日期", "pickupTime": "取车时间",
-    "dropoffDate": "还车日期", "dropoffTime": "还车时间",
-    "driverAge": "驾驶员年龄", "ageUnit": "岁", "submit": "搜索租车 →"
+    "pickup": "取车地点",
+    "pickupPlaceholder": "城市、机场或地址",
+    "dropoff": "还车地点",
+    "sameLocation": "在同一地点还车",
+    "pickupDate": "取车日期",
+    "pickupTime": "取车时间",
+    "dropoffDate": "还车日期",
+    "dropoffTime": "还车时间",
+    "driverAge": "驾驶员年龄",
+    "ageUnit": "岁",
+    "submit": "搜索租车 →"
   },
   "results": {
-    "carsIn": "{location}的租车", "found": "找到 {count} 个结果",
+    "carsIn": "{location}的租车",
+    "found": "找到 {count} 个结果",
     "noneFound": "未找到符合条件的租车。请尝试不同的日期或地点。",
-    "newSearch": "← 重新搜索", "dropoffLabel": "还车：{location}",
-    "driverAgeLabel": "驾驶员年龄 {age} 岁", "pricesAsOf": "{time} 的价格",
-    "fetchingPrices": "正在更新价格…", "perDay": "每天",
-    "bookOn": "在 {provider} 预订", "cheapest": "最优惠",
-    "comparePrices": "比较价格 →", "seats": "{count} 座",
-    "doors": "{count} 门", "automatic": "自动挡", "manual": "手动挡",
-    "ac": "空调", "luggage": "大{large}件 / 小{small}件行李"
+    "newSearch": "← 重新搜索",
+    "dropoffLabel": "还车：{location}",
+    "driverAgeLabel": "驾驶员年龄 {age} 岁",
+    "pricesAsOf": "{time} 的价格",
+    "fetchingPrices": "正在更新价格…",
+    "perDay": "每天",
+    "bookOn": "在 {provider} 预订",
+    "cheapest": "最优惠",
+    "comparePrices": "比较价格 →",
+    "seats": "{count} 座",
+    "doors": "{count} 门",
+    "automatic": "自动挡",
+    "manual": "手动挡",
+    "ac": "空调",
+    "luggage": "大{large}件 / 小{small}件行李"
   },
   "affiliate": {
-    "compareOn": "在顶级网站比较", "alsoCompare": "也可以比较",
-    "title": "在{location}搜索租车", "moreOptions": "寻找更多选择？",
+    "compareOn": "在顶级网站比较",
+    "alsoCompare": "也可以比较",
+    "title": "在{location}搜索租车",
+    "moreOptions": "寻找更多选择？",
     "subtitle": "我们直接在最大的租车平台搜索，确保您始终获得真实价格。",
     "moreSites": "在更多平台比较价格，找到最佳优惠。",
     "note": "在合作伙伴网站打开，已预填您的搜索信息 · 免费"
   },
   "overlay": {
-    "searching": "正在搜索可用租车…", "contacting": "正在联系供应商…",
-    "preparing": "正在准备结果…", "loading": "正在加载 {provider} 的租车…",
-    "done": "{provider}", "unavailable": "{provider} 暂不可用", "fetchingPrices": "正在更新价格…"
+    "searching": "正在搜索可用租车…",
+    "contacting": "正在联系供应商…",
+    "preparing": "正在准备结果…",
+    "loading": "正在加载 {provider} 的租车…",
+    "done": "{provider}",
+    "unavailable": "{provider} 暂不可用",
+    "fetchingPrices": "正在更新价格…"
   },
   "footer": {
-    "popular": "热门", "europe": "欧洲", "asiaPacific": "亚洲和太平洋", "help": "帮助",
-    "insurance": "保险信息", "cancellation": "取消政策",
+    "popular": "热门",
+    "europe": "欧洲",
+    "asiaPacific": "亚洲和太平洋",
+    "help": "帮助",
+    "insurance": "保险信息",
+    "cancellation": "取消政策",
     "tagline": "深入挖掘，构建解决方案。",
     "copyright": "© 2025 BurrowSoft. 保留所有权利。"
+  },
+  "noAds": {
+    "tagline": "纯净搜索 · 无广告 · 无需注册"
   }
 }

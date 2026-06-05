@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "Сравните авто от лучших поставщиков" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "Сравните авто от лучших поставщиков"
+  },
   "hero": {
     "title": "Найдите идеальный автомобиль напрокат.",
     "subtitle": "Сравнивайте и бронируйте авто по всему миру. Лучшие предложения без скрытых комиссий.",
     "badge": "Сравните более 500 прокатных компаний",
-    "trust1": "✓ Бесплатная отмена", "trust2": "✓ Без комиссий за карту", "trust3": "✓ Поддержка 24/7",
-    "feature1Title": "Ведущие поставщики", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt и другие — всё в одном поиске.",
-    "feature2Title": "Лучшая цена", "feature2Body": "Сравниваем тарифы всех поставщиков, чтобы вы получали самую низкую цену.",
-    "feature3Title": "Без скрытых комиссий", "feature3Body": "Цена включает налоги и стандартное покрытие. Без сюрпризов.",
-    "feature4Title": "Бесплатная отмена", "feature4Body": "Большинство бронирований можно отменить бесплатно за 48 ч до получения.",
+    "trust1": "✓ Бесплатная отмена",
+    "trust2": "✓ Без комиссий за карту",
+    "trust3": "✓ Поддержка 24/7",
+    "feature1Title": "Ведущие поставщики",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt и другие — всё в одном поиске.",
+    "feature2Title": "Лучшая цена",
+    "feature2Body": "Сравниваем тарифы всех поставщиков, чтобы вы получали самую низкую цену.",
+    "feature3Title": "Без скрытых комиссий",
+    "feature3Body": "Цена включает налоги и стандартное покрытие. Без сюрпризов.",
+    "feature4Title": "Бесплатная отмена",
+    "feature4Body": "Большинство бронирований можно отменить бесплатно за 48 ч до получения.",
     "popularTitle": "Популярные направления"
   },
   "search": {
-    "pickup": "Место получения", "pickupPlaceholder": "Город, аэропорт или адрес",
-    "dropoff": "Место возврата", "sameLocation": "Вернуть в то же место",
-    "pickupDate": "Дата получения", "pickupTime": "Время получения",
-    "dropoffDate": "Дата возврата", "dropoffTime": "Время возврата",
-    "driverAge": "Возраст водителя", "ageUnit": "лет", "submit": "Найти автомобили →"
+    "pickup": "Место получения",
+    "pickupPlaceholder": "Город, аэропорт или адрес",
+    "dropoff": "Место возврата",
+    "sameLocation": "Вернуть в то же место",
+    "pickupDate": "Дата получения",
+    "pickupTime": "Время получения",
+    "dropoffDate": "Дата возврата",
+    "dropoffTime": "Время возврата",
+    "driverAge": "Возраст водителя",
+    "ageUnit": "лет",
+    "submit": "Найти автомобили →"
   },
   "results": {
-    "carsIn": "Автомобили в {location}", "found": "Найдено {count} результатов",
+    "carsIn": "Автомобили в {location}",
+    "found": "Найдено {count} результатов",
     "noneFound": "Автомобили не найдены. Попробуйте другие даты или место.",
-    "newSearch": "← Новый поиск", "dropoffLabel": "Возврат: {location}",
-    "driverAgeLabel": "Возраст водителя {age} лет", "pricesAsOf": "Цены на {time}",
-    "fetchingPrices": "Обновление цен…", "perDay": "в сутки",
-    "bookOn": "Забронировать на {provider}", "cheapest": "Самый выгодный",
-    "comparePrices": "Сравнить цены →", "seats": "{count} мест",
-    "doors": "{count} дверей", "automatic": "Автомат", "manual": "Механика",
-    "ac": "Кондиционер", "luggage": "{large} бол. / {small} мал. багаж"
+    "newSearch": "← Новый поиск",
+    "dropoffLabel": "Возврат: {location}",
+    "driverAgeLabel": "Возраст водителя {age} лет",
+    "pricesAsOf": "Цены на {time}",
+    "fetchingPrices": "Обновление цен…",
+    "perDay": "в сутки",
+    "bookOn": "Забронировать на {provider}",
+    "cheapest": "Самый выгодный",
+    "comparePrices": "Сравнить цены →",
+    "seats": "{count} мест",
+    "doors": "{count} дверей",
+    "automatic": "Автомат",
+    "manual": "Механика",
+    "ac": "Кондиционер",
+    "luggage": "{large} бол. / {small} мал. багаж"
   },
   "affiliate": {
-    "compareOn": "Сравнить на лучших сайтах", "alsoCompare": "Также на",
-    "title": "Найти авто в {location}", "moreOptions": "Ищете больше вариантов?",
+    "compareOn": "Сравнить на лучших сайтах",
+    "alsoCompare": "Также на",
+    "title": "Найти авто в {location}",
+    "moreOptions": "Ищете больше вариантов?",
     "subtitle": "Ищем напрямую на крупнейших платформах аренды, чтобы вы получали реальную цену.",
     "moreSites": "Сравните цены на других платформах для лучшего предложения.",
     "note": "Откроется сайт партнёра с вашими данными · Бесплатно"
   },
   "overlay": {
-    "searching": "Поиск доступных автомобилей…", "contacting": "Связь с поставщиками…",
-    "preparing": "Подготовка результатов…", "loading": "Загрузка авто от {provider}…",
-    "done": "{provider}", "unavailable": "{provider} недоступен", "fetchingPrices": "Обновление цен…"
+    "searching": "Поиск доступных автомобилей…",
+    "contacting": "Связь с поставщиками…",
+    "preparing": "Подготовка результатов…",
+    "loading": "Загрузка авто от {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} недоступен",
+    "fetchingPrices": "Обновление цен…"
   },
   "footer": {
-    "popular": "Популярное", "europe": "Европа", "asiaPacific": "Азия и Тихоокеанский регион", "help": "Помощь",
-    "insurance": "Страхование", "cancellation": "Политика отмены",
+    "popular": "Популярное",
+    "europe": "Европа",
+    "asiaPacific": "Азия и Тихоокеанский регион",
+    "help": "Помощь",
+    "insurance": "Страхование",
+    "cancellation": "Политика отмены",
     "tagline": "Глубокий поиск. Умные решения.",
     "copyright": "© 2025 BurrowSoft. Все права защищены."
+  },
+  "noAds": {
+    "tagline": "Чистый поиск. Без рекламы. Без регистрации."
   }
 }

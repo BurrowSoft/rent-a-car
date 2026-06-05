@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "Comparez les voitures des meilleurs fournisseurs" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "Comparez les voitures des meilleurs fournisseurs"
+  },
   "hero": {
     "title": "Trouvez la voiture de location idéale.",
     "subtitle": "Comparez et réservez des voitures dans le monde entier. Les meilleures offres des meilleurs fournisseurs — sans frais cachés.",
     "badge": "Comparez plus de 500 loueurs",
-    "trust1": "✓ Annulation gratuite", "trust2": "✓ Sans frais de carte", "trust3": "✓ Support 24h/24",
-    "feature1Title": "Meilleurs fournisseurs", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt et plus — tout en une seule recherche.",
-    "feature2Title": "Meilleur prix", "feature2Body": "Nous comparons les tarifs de tous les fournisseurs pour vous garantir le prix le plus bas.",
-    "feature3Title": "Sans frais cachés", "feature3Body": "Le prix inclut les taxes et la couverture standard. Pas de surprises.",
-    "feature4Title": "Annulation gratuite", "feature4Body": "La plupart des réservations peuvent être annulées gratuitement jusqu'à 48 h avant le retrait.",
+    "trust1": "✓ Annulation gratuite",
+    "trust2": "✓ Sans frais de carte",
+    "trust3": "✓ Support 24h/24",
+    "feature1Title": "Meilleurs fournisseurs",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt et plus — tout en une seule recherche.",
+    "feature2Title": "Meilleur prix",
+    "feature2Body": "Nous comparons les tarifs de tous les fournisseurs pour vous garantir le prix le plus bas.",
+    "feature3Title": "Sans frais cachés",
+    "feature3Body": "Le prix inclut les taxes et la couverture standard. Pas de surprises.",
+    "feature4Title": "Annulation gratuite",
+    "feature4Body": "La plupart des réservations peuvent être annulées gratuitement jusqu'à 48 h avant le retrait.",
     "popularTitle": "Destinations populaires"
   },
   "search": {
-    "pickup": "Lieu de prise en charge", "pickupPlaceholder": "Ville, aéroport ou adresse",
-    "dropoff": "Lieu de restitution", "sameLocation": "Restituer au même endroit",
-    "pickupDate": "Date de prise en charge", "pickupTime": "Heure de prise en charge",
-    "dropoffDate": "Date de restitution", "dropoffTime": "Heure de restitution",
-    "driverAge": "Âge du conducteur", "ageUnit": "ans", "submit": "Rechercher des voitures →"
+    "pickup": "Lieu de prise en charge",
+    "pickupPlaceholder": "Ville, aéroport ou adresse",
+    "dropoff": "Lieu de restitution",
+    "sameLocation": "Restituer au même endroit",
+    "pickupDate": "Date de prise en charge",
+    "pickupTime": "Heure de prise en charge",
+    "dropoffDate": "Date de restitution",
+    "dropoffTime": "Heure de restitution",
+    "driverAge": "Âge du conducteur",
+    "ageUnit": "ans",
+    "submit": "Rechercher des voitures →"
   },
   "results": {
-    "carsIn": "Voitures à {location}", "found": "{count} résultat{s} trouvé{s}",
+    "carsIn": "Voitures à {location}",
+    "found": "{count} résultat{s} trouvé{s}",
     "noneFound": "Aucune voiture trouvée. Essayez d'autres dates ou un autre lieu.",
-    "newSearch": "← Nouvelle recherche", "dropoffLabel": "Restitution : {location}",
-    "driverAgeLabel": "Conducteur de {age} ans", "pricesAsOf": "Prix au {time}",
-    "fetchingPrices": "Mise à jour des prix…", "perDay": "par jour",
-    "bookOn": "Réserver sur {provider}", "cheapest": "Option la moins chère",
-    "comparePrices": "Comparer les prix →", "seats": "{count} places",
-    "doors": "{count} portes", "automatic": "Automatique", "manual": "Manuelle",
-    "ac": "Clim", "luggage": "{large}G / {small}P valises"
+    "newSearch": "← Nouvelle recherche",
+    "dropoffLabel": "Restitution : {location}",
+    "driverAgeLabel": "Conducteur de {age} ans",
+    "pricesAsOf": "Prix au {time}",
+    "fetchingPrices": "Mise à jour des prix…",
+    "perDay": "par jour",
+    "bookOn": "Réserver sur {provider}",
+    "cheapest": "Option la moins chère",
+    "comparePrices": "Comparer les prix →",
+    "seats": "{count} places",
+    "doors": "{count} portes",
+    "automatic": "Automatique",
+    "manual": "Manuelle",
+    "ac": "Clim",
+    "luggage": "{large}G / {small}P valises"
   },
   "affiliate": {
-    "compareOn": "Comparer sur les meilleurs sites", "alsoCompare": "Comparer aussi sur",
-    "title": "Trouver des voitures à {location}", "moreOptions": "Vous cherchez plus d'options ?",
+    "compareOn": "Comparer sur les meilleurs sites",
+    "alsoCompare": "Comparer aussi sur",
+    "title": "Trouver des voitures à {location}",
+    "moreOptions": "Vous cherchez plus d'options ?",
     "subtitle": "Nous cherchons directement sur les plus grandes plateformes pour que vous obteniez toujours le vrai prix.",
     "moreSites": "Comparez les prix sur d'autres plateformes pour trouver la meilleure offre.",
     "note": "Ouvre le site partenaire avec votre recherche préremplie · Gratuit"
   },
   "overlay": {
-    "searching": "Recherche de voitures disponibles…", "contacting": "Contact des fournisseurs…",
-    "preparing": "Préparation des résultats…", "loading": "Chargement des voitures de {provider}…",
-    "done": "{provider}", "unavailable": "{provider} indisponible", "fetchingPrices": "Mise à jour des prix…"
+    "searching": "Recherche de voitures disponibles…",
+    "contacting": "Contact des fournisseurs…",
+    "preparing": "Préparation des résultats…",
+    "loading": "Chargement des voitures de {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} indisponible",
+    "fetchingPrices": "Mise à jour des prix…"
   },
   "footer": {
-    "popular": "Populaire", "europe": "Europe", "asiaPacific": "Asie & Pacifique", "help": "Aide",
-    "insurance": "Info assurance", "cancellation": "Politique d'annulation",
+    "popular": "Populaire",
+    "europe": "Europe",
+    "asiaPacific": "Asie & Pacifique",
+    "help": "Aide",
+    "insurance": "Info assurance",
+    "cancellation": "Politique d'annulation",
     "tagline": "Chercher en profondeur. Construire des solutions.",
     "copyright": "© 2025 BurrowSoft. Tous droits réservés."
+  },
+  "noAds": {
+    "tagline": "Recherche pure. Zéro pub. Zéro inscription."
   }
 }

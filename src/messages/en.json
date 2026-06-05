@@ -80,5 +80,8 @@
     "cancellation": "Cancellation policy",
     "tagline": "Digging deep. Building solutions.",
     "copyright": "© 2025 BurrowSoft. All rights reserved."
+  },
+  "noAds": {
+    "tagline": "Clean Search. No Ads. No Sign-Up."
   }
 }

@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "比較頂級供應商的租車服務" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "比較頂級供應商的租車服務"
+  },
   "hero": {
     "title": "找到您的完美租車。",
     "subtitle": "在全球範圍內比較並預訂租車。頂級供應商的最佳優惠 — 無隱藏費用。",
     "badge": "比較500多家租車公司",
-    "trust1": "✓ 免費取消", "trust2": "✓ 無信用卡手續費", "trust3": "✓ 全天候客服",
-    "feature1Title": "頂級供應商", "feature1Body": "Hertz、Avis、Budget、Enterprise、Sixt等 — 一站式搜尋。",
-    "feature2Title": "最優惠價格", "feature2Body": "我們比較所有供應商的價格，確保您獲得最低費用。",
-    "feature3Title": "無隱藏費用", "feature3Body": "顯示價格含稅及標準保險。沒有意外費用。",
-    "feature4Title": "免費取消", "feature4Body": "大多數預訂可在取車前48小時內免費取消。",
+    "trust1": "✓ 免費取消",
+    "trust2": "✓ 無信用卡手續費",
+    "trust3": "✓ 全天候客服",
+    "feature1Title": "頂級供應商",
+    "feature1Body": "Hertz、Avis、Budget、Enterprise、Sixt等 — 一站式搜尋。",
+    "feature2Title": "最優惠價格",
+    "feature2Body": "我們比較所有供應商的價格，確保您獲得最低費用。",
+    "feature3Title": "無隱藏費用",
+    "feature3Body": "顯示價格含稅及標準保險。沒有意外費用。",
+    "feature4Title": "免費取消",
+    "feature4Body": "大多數預訂可在取車前48小時內免費取消。",
     "popularTitle": "熱門目的地"
   },
   "search": {
-    "pickup": "取車地點", "pickupPlaceholder": "城市、機場或地址",
-    "dropoff": "還車地點", "sameLocation": "在同一地點還車",
-    "pickupDate": "取車日期", "pickupTime": "取車時間",
-    "dropoffDate": "還車日期", "dropoffTime": "還車時間",
-    "driverAge": "駕駛員年齡", "ageUnit": "歲", "submit": "搜尋租車 →"
+    "pickup": "取車地點",
+    "pickupPlaceholder": "城市、機場或地址",
+    "dropoff": "還車地點",
+    "sameLocation": "在同一地點還車",
+    "pickupDate": "取車日期",
+    "pickupTime": "取車時間",
+    "dropoffDate": "還車日期",
+    "dropoffTime": "還車時間",
+    "driverAge": "駕駛員年齡",
+    "ageUnit": "歲",
+    "submit": "搜尋租車 →"
   },
   "results": {
-    "carsIn": "{location}的租車", "found": "找到 {count} 個結果",
+    "carsIn": "{location}的租車",
+    "found": "找到 {count} 個結果",
     "noneFound": "未找到符合條件的租車。請嘗試不同的日期或地點。",
-    "newSearch": "← 重新搜尋", "dropoffLabel": "還車：{location}",
-    "driverAgeLabel": "駕駛員年齡 {age} 歲", "pricesAsOf": "{time} 的價格",
-    "fetchingPrices": "正在更新價格…", "perDay": "每天",
-    "bookOn": "在 {provider} 預訂", "cheapest": "最優惠",
-    "comparePrices": "比較價格 →", "seats": "{count} 座",
-    "doors": "{count} 門", "automatic": "自動排擋", "manual": "手動排擋",
-    "ac": "冷氣", "luggage": "大{large}件 / 小{small}件行李"
+    "newSearch": "← 重新搜尋",
+    "dropoffLabel": "還車：{location}",
+    "driverAgeLabel": "駕駛員年齡 {age} 歲",
+    "pricesAsOf": "{time} 的價格",
+    "fetchingPrices": "正在更新價格…",
+    "perDay": "每天",
+    "bookOn": "在 {provider} 預訂",
+    "cheapest": "最優惠",
+    "comparePrices": "比較價格 →",
+    "seats": "{count} 座",
+    "doors": "{count} 門",
+    "automatic": "自動排擋",
+    "manual": "手動排擋",
+    "ac": "冷氣",
+    "luggage": "大{large}件 / 小{small}件行李"
   },
   "affiliate": {
-    "compareOn": "在頂級網站比較", "alsoCompare": "也可以比較",
-    "title": "在{location}搜尋租車", "moreOptions": "尋找更多選擇？",
+    "compareOn": "在頂級網站比較",
+    "alsoCompare": "也可以比較",
+    "title": "在{location}搜尋租車",
+    "moreOptions": "尋找更多選擇？",
     "subtitle": "我們直接在最大的租車平台搜尋，確保您始終獲得真實價格。",
     "moreSites": "在更多平台比較價格，找到最佳優惠。",
     "note": "在合作夥伴網站開啟，已預填您的搜尋資訊 · 免費"
   },
   "overlay": {
-    "searching": "正在搜尋可用租車…", "contacting": "正在聯絡供應商…",
-    "preparing": "正在準備結果…", "loading": "正在載入 {provider} 的租車…",
-    "done": "{provider}", "unavailable": "{provider} 暫不可用", "fetchingPrices": "正在更新價格…"
+    "searching": "正在搜尋可用租車…",
+    "contacting": "正在聯絡供應商…",
+    "preparing": "正在準備結果…",
+    "loading": "正在載入 {provider} 的租車…",
+    "done": "{provider}",
+    "unavailable": "{provider} 暫不可用",
+    "fetchingPrices": "正在更新價格…"
   },
   "footer": {
-    "popular": "熱門", "europe": "歐洲", "asiaPacific": "亞洲和太平洋", "help": "說明",
-    "insurance": "保險資訊", "cancellation": "取消政策",
+    "popular": "熱門",
+    "europe": "歐洲",
+    "asiaPacific": "亞洲和太平洋",
+    "help": "說明",
+    "insurance": "保險資訊",
+    "cancellation": "取消政策",
     "tagline": "深入挖掘，建構解決方案。",
     "copyright": "© 2025 BurrowSoft. 版權所有。"
+  },
+  "noAds": {
+    "tagline": "純淨搜尋 · 無廣告 · 無需註冊"
   }
 }

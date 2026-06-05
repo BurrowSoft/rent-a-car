@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "قارن السيارات من أفضل الموردين" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "قارن السيارات من أفضل الموردين"
+  },
   "hero": {
     "title": "اعثر على سيارة الإيجار المثالية.",
     "subtitle": "قارن واحجز سيارات الإيجار في جميع أنحاء العالم. أفضل العروض من أفضل الموردين — بدون رسوم مخفية.",
     "badge": "قارن أكثر من 500 شركة تأجير",
-    "trust1": "✓ إلغاء مجاني", "trust2": "✓ بدون رسوم بطاقة", "trust3": "✓ دعم 24/7",
-    "feature1Title": "أفضل الموردين", "feature1Body": "Hertz وAvis وBudget وEnterprise وSixt والمزيد — كل ذلك في بحث واحد.",
-    "feature2Title": "أفضل سعر", "feature2Body": "نقارن الأسعار من جميع الموردين لضمان حصولك على أفضل سعر دائماً.",
-    "feature3Title": "بدون رسوم مخفية", "feature3Body": "السعر يشمل الضرائب والتغطية القياسية. لا مفاجآت.",
-    "feature4Title": "إلغاء مجاني", "feature4Body": "يمكن إلغاء معظم الحجوزات مجاناً حتى 48 ساعة قبل الاستلام.",
+    "trust1": "✓ إلغاء مجاني",
+    "trust2": "✓ بدون رسوم بطاقة",
+    "trust3": "✓ دعم 24/7",
+    "feature1Title": "أفضل الموردين",
+    "feature1Body": "Hertz وAvis وBudget وEnterprise وSixt والمزيد — كل ذلك في بحث واحد.",
+    "feature2Title": "أفضل سعر",
+    "feature2Body": "نقارن الأسعار من جميع الموردين لضمان حصولك على أفضل سعر دائماً.",
+    "feature3Title": "بدون رسوم مخفية",
+    "feature3Body": "السعر يشمل الضرائب والتغطية القياسية. لا مفاجآت.",
+    "feature4Title": "إلغاء مجاني",
+    "feature4Body": "يمكن إلغاء معظم الحجوزات مجاناً حتى 48 ساعة قبل الاستلام.",
     "popularTitle": "الوجهات الشعبية"
   },
   "search": {
-    "pickup": "موقع الاستلام", "pickupPlaceholder": "مدينة أو مطار أو عنوان",
-    "dropoff": "موقع الإرجاع", "sameLocation": "الإرجاع في نفس الموقع",
-    "pickupDate": "تاريخ الاستلام", "pickupTime": "وقت الاستلام",
-    "dropoffDate": "تاريخ الإرجاع", "dropoffTime": "وقت الإرجاع",
-    "driverAge": "عمر السائق", "ageUnit": "سنة", "submit": "البحث عن سيارات →"
+    "pickup": "موقع الاستلام",
+    "pickupPlaceholder": "مدينة أو مطار أو عنوان",
+    "dropoff": "موقع الإرجاع",
+    "sameLocation": "الإرجاع في نفس الموقع",
+    "pickupDate": "تاريخ الاستلام",
+    "pickupTime": "وقت الاستلام",
+    "dropoffDate": "تاريخ الإرجاع",
+    "dropoffTime": "وقت الإرجاع",
+    "driverAge": "عمر السائق",
+    "ageUnit": "سنة",
+    "submit": "البحث عن سيارات →"
   },
   "results": {
-    "carsIn": "سيارات في {location}", "found": "تم العثور على {count} نتيجة",
+    "carsIn": "سيارات في {location}",
+    "found": "تم العثور على {count} نتيجة",
     "noneFound": "لم يتم العثور على سيارات. جرّب تواريخ أو موقعاً مختلفاً.",
-    "newSearch": "→ بحث جديد", "dropoffLabel": "الإرجاع: {location}",
-    "driverAgeLabel": "عمر السائق {age}", "pricesAsOf": "الأسعار بتاريخ {time}",
-    "fetchingPrices": "جارٍ تحديث الأسعار…", "perDay": "يومياً",
-    "bookOn": "احجز على {provider}", "cheapest": "الخيار الأرخص",
-    "comparePrices": "مقارنة الأسعار →", "seats": "{count} مقاعد",
-    "doors": "{count} أبواب", "automatic": "أوتوماتيك", "manual": "يدوي",
-    "ac": "تكييف", "luggage": "{large}ك / {small}ص حقائب"
+    "newSearch": "→ بحث جديد",
+    "dropoffLabel": "الإرجاع: {location}",
+    "driverAgeLabel": "عمر السائق {age}",
+    "pricesAsOf": "الأسعار بتاريخ {time}",
+    "fetchingPrices": "جارٍ تحديث الأسعار…",
+    "perDay": "يومياً",
+    "bookOn": "احجز على {provider}",
+    "cheapest": "الخيار الأرخص",
+    "comparePrices": "مقارنة الأسعار →",
+    "seats": "{count} مقاعد",
+    "doors": "{count} أبواب",
+    "automatic": "أوتوماتيك",
+    "manual": "يدوي",
+    "ac": "تكييف",
+    "luggage": "{large}ك / {small}ص حقائب"
   },
   "affiliate": {
-    "compareOn": "قارن على أفضل المواقع", "alsoCompare": "قارن أيضاً على",
-    "title": "البحث عن سيارات في {location}", "moreOptions": "تبحث عن خيارات أكثر؟",
+    "compareOn": "قارن على أفضل المواقع",
+    "alsoCompare": "قارن أيضاً على",
+    "title": "البحث عن سيارات في {location}",
+    "moreOptions": "تبحث عن خيارات أكثر؟",
     "subtitle": "نبحث مباشرة على أكبر منصات التأجير لضمان حصولك دائماً على السعر الحقيقي.",
     "moreSites": "قارن الأسعار على منصات أكثر للعثور على أفضل صفقة.",
     "note": "يفتح موقع الشريك مع بياناتك مملوءة مسبقاً · مجاناً"
   },
   "overlay": {
-    "searching": "جارٍ البحث عن السيارات المتاحة…", "contacting": "جارٍ التواصل مع الموردين…",
-    "preparing": "جارٍ تحضير النتائج…", "loading": "جارٍ تحميل سيارات {provider}…",
-    "done": "{provider}", "unavailable": "{provider} غير متاح", "fetchingPrices": "جارٍ تحديث الأسعار…"
+    "searching": "جارٍ البحث عن السيارات المتاحة…",
+    "contacting": "جارٍ التواصل مع الموردين…",
+    "preparing": "جارٍ تحضير النتائج…",
+    "loading": "جارٍ تحميل سيارات {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} غير متاح",
+    "fetchingPrices": "جارٍ تحديث الأسعار…"
   },
   "footer": {
-    "popular": "شعبي", "europe": "أوروبا", "asiaPacific": "آسيا والمحيط الهادئ", "help": "مساعدة",
-    "insurance": "معلومات التأمين", "cancellation": "سياسة الإلغاء",
+    "popular": "شعبي",
+    "europe": "أوروبا",
+    "asiaPacific": "آسيا والمحيط الهادئ",
+    "help": "مساعدة",
+    "insurance": "معلومات التأمين",
+    "cancellation": "سياسة الإلغاء",
     "tagline": "البحث العميق. بناء الحلول.",
     "copyright": "© 2025 BurrowSoft. جميع الحقوق محفوظة."
+  },
+  "noAds": {
+    "tagline": "بحث نظيف. بلا إعلانات. بلا تسجيل."
   }
 }

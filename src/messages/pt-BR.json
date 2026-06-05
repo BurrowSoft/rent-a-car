@@ -1,50 +1,87 @@
 {
-  "nav": { "home": "RentACarMole", "tagline": "Compare carros dos melhores fornecedores" },
+  "nav": {
+    "home": "RentACarMole",
+    "tagline": "Compare carros dos melhores fornecedores"
+  },
   "hero": {
     "title": "Encontre o carro alugado perfeito.",
     "subtitle": "Compare e reserve carros no mundo todo. As melhores ofertas dos melhores fornecedores — sem taxas ocultas.",
     "badge": "Compare mais de 500 locadoras",
-    "trust1": "✓ Cancelamento gratuito", "trust2": "✓ Sem taxas no cartão", "trust3": "✓ Suporte 24/7",
-    "feature1Title": "Melhores locadoras", "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt e mais — tudo em uma busca.",
-    "feature2Title": "Melhor preço", "feature2Body": "Comparamos tarifas de todos os fornecedores para você obter o menor preço.",
-    "feature3Title": "Sem taxas ocultas", "feature3Body": "O preço inclui impostos e cobertura padrão. Sem surpresas.",
-    "feature4Title": "Cancelamento gratuito", "feature4Body": "A maioria das reservas pode ser cancelada sem custo até 48 h antes da retirada.",
+    "trust1": "✓ Cancelamento gratuito",
+    "trust2": "✓ Sem taxas no cartão",
+    "trust3": "✓ Suporte 24/7",
+    "feature1Title": "Melhores locadoras",
+    "feature1Body": "Hertz, Avis, Budget, Enterprise, Sixt e mais — tudo em uma busca.",
+    "feature2Title": "Melhor preço",
+    "feature2Body": "Comparamos tarifas de todos os fornecedores para você obter o menor preço.",
+    "feature3Title": "Sem taxas ocultas",
+    "feature3Body": "O preço inclui impostos e cobertura padrão. Sem surpresas.",
+    "feature4Title": "Cancelamento gratuito",
+    "feature4Body": "A maioria das reservas pode ser cancelada sem custo até 48 h antes da retirada.",
     "popularTitle": "Destinos populares"
   },
   "search": {
-    "pickup": "Local de retirada", "pickupPlaceholder": "Cidade, aeroporto ou endereço",
-    "dropoff": "Local de devolução", "sameLocation": "Devolver no mesmo local",
-    "pickupDate": "Data de retirada", "pickupTime": "Hora de retirada",
-    "dropoffDate": "Data de devolução", "dropoffTime": "Hora de devolução",
-    "driverAge": "Idade do motorista", "ageUnit": "anos", "submit": "Buscar carros →"
+    "pickup": "Local de retirada",
+    "pickupPlaceholder": "Cidade, aeroporto ou endereço",
+    "dropoff": "Local de devolução",
+    "sameLocation": "Devolver no mesmo local",
+    "pickupDate": "Data de retirada",
+    "pickupTime": "Hora de retirada",
+    "dropoffDate": "Data de devolução",
+    "dropoffTime": "Hora de devolução",
+    "driverAge": "Idade do motorista",
+    "ageUnit": "anos",
+    "submit": "Buscar carros →"
   },
   "results": {
-    "carsIn": "Carros em {location}", "found": "{count} resultado{s} encontrado{s}",
+    "carsIn": "Carros em {location}",
+    "found": "{count} resultado{s} encontrado{s}",
     "noneFound": "Nenhum carro encontrado. Tente outras datas ou local.",
-    "newSearch": "← Nova busca", "dropoffLabel": "Devolução: {location}",
-    "driverAgeLabel": "Motorista com {age} anos", "pricesAsOf": "Preços às {time}",
-    "fetchingPrices": "Atualizando preços…", "perDay": "por dia",
-    "bookOn": "Reservar no {provider}", "cheapest": "Opção mais barata",
-    "comparePrices": "Comparar preços →", "seats": "{count} lugares",
-    "doors": "{count} portas", "automatic": "Automático", "manual": "Manual",
-    "ac": "A/C", "luggage": "{large}G / {small}P malas"
+    "newSearch": "← Nova busca",
+    "dropoffLabel": "Devolução: {location}",
+    "driverAgeLabel": "Motorista com {age} anos",
+    "pricesAsOf": "Preços às {time}",
+    "fetchingPrices": "Atualizando preços…",
+    "perDay": "por dia",
+    "bookOn": "Reservar no {provider}",
+    "cheapest": "Opção mais barata",
+    "comparePrices": "Comparar preços →",
+    "seats": "{count} lugares",
+    "doors": "{count} portas",
+    "automatic": "Automático",
+    "manual": "Manual",
+    "ac": "A/C",
+    "luggage": "{large}G / {small}P malas"
   },
   "affiliate": {
-    "compareOn": "Comparar nos melhores sites", "alsoCompare": "Comparar também em",
-    "title": "Buscar carros em {location}", "moreOptions": "Procurando mais opções?",
+    "compareOn": "Comparar nos melhores sites",
+    "alsoCompare": "Comparar também em",
+    "title": "Buscar carros em {location}",
+    "moreOptions": "Procurando mais opções?",
     "subtitle": "Buscamos nas maiores plataformas para você sempre ter o preço real.",
     "moreSites": "Compare preços em mais plataformas para a melhor oferta.",
     "note": "Abre o site do parceiro com sua busca preenchida · Grátis"
   },
   "overlay": {
-    "searching": "Buscando carros disponíveis…", "contacting": "Contactando fornecedores…",
-    "preparing": "Preparando resultados…", "loading": "Carregando carros de {provider}…",
-    "done": "{provider}", "unavailable": "{provider} indisponível", "fetchingPrices": "Atualizando preços…"
+    "searching": "Buscando carros disponíveis…",
+    "contacting": "Contactando fornecedores…",
+    "preparing": "Preparando resultados…",
+    "loading": "Carregando carros de {provider}…",
+    "done": "{provider}",
+    "unavailable": "{provider} indisponível",
+    "fetchingPrices": "Atualizando preços…"
   },
   "footer": {
-    "popular": "Popular", "europe": "Europa", "asiaPacific": "Ásia e Pacífico", "help": "Ajuda",
-    "insurance": "Informações de seguro", "cancellation": "Política de cancelamento",
+    "popular": "Popular",
+    "europe": "Europa",
+    "asiaPacific": "Ásia e Pacífico",
+    "help": "Ajuda",
+    "insurance": "Informações de seguro",
+    "cancellation": "Política de cancelamento",
     "tagline": "Buscando fundo. Construindo soluções.",
     "copyright": "© 2025 BurrowSoft. Todos os direitos reservados."
+  },
+  "noAds": {
+    "tagline": "Busca limpa. Sem anúncios. Sem cadastro."
   }
 }
