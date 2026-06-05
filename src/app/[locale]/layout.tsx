@@ -137,10 +137,10 @@ export default async function LocaleLayout({
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
               <Link href="/" className="flex items-center gap-2.5">
                 <Image
-                  src="/mascot.svg"
+                  src="/mascot.png"
                   alt={SITE_NAME}
-                  width={36}
-                  height={36}
+                  width={40}
+                  height={40}
                   className="shrink-0"
                   priority
                 />
@@ -176,18 +176,7 @@ export default async function LocaleLayout({
                 <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
                   <a href="https://burrowsoft.com" target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors" aria-label="BurrowSoft">
-                    <svg width="22" height="22" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <circle cx="100" cy="100" r="96" fill="#f43f5e"/>
-                      <circle cx="100" cy="90" r="50" fill="white" stroke="#1e2d3d" strokeWidth="6"/>
-                      <circle cx="82" cy="86" r="15" fill="white" stroke="#1e2d3d" strokeWidth="4"/>
-                      <circle cx="118" cy="86" r="15" fill="white" stroke="#1e2d3d" strokeWidth="4"/>
-                      <circle cx="82" cy="86" r="7" fill="#1e2d3d"/>
-                      <circle cx="84" cy="84" r="3" fill="white"/>
-                      <circle cx="118" cy="86" r="7" fill="#1e2d3d"/>
-                      <circle cx="120" cy="84" r="3" fill="white"/>
-                      <ellipse cx="100" cy="108" rx="6" ry="4.5" fill="#1e2d3d"/>
-                      <rect x="10" y="134" width="180" height="14" rx="5" fill="#1e2d3d"/>
-                    </svg>
+                    <Image src="/burrowsoft-logo.png" alt="BurrowSoft" width={28} height={28} className="shrink-0" />
                     <span className="text-sm font-semibold">BurrowSoft</span>
                   </a>
                   <nav aria-label="BurrowSoft products">
