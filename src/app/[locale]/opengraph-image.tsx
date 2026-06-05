@@ -20,7 +20,7 @@ export default async function OGImage() {
           gap: 40,
           width: "100%",
           height: "100%",
-          background: "linear-gradient(135deg, #134e4a 0%, #164e63 100%)",
+          background: "linear-gradient(135deg, #4c0519 0%, #881337 100%)",
           fontFamily: "sans-serif",
         }}
       >
@@ -31,7 +31,7 @@ export default async function OGImage() {
             RentACarMole
           </span>
           <span style={{ fontSize: 28, color: "#94a3b8" }}>
-            Clean Search. No Ads. No Sign-Up.
+            Compare & Book Rental Cars Worldwide
           </span>
         </div>
       </div>
