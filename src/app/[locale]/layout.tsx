@@ -12,7 +12,8 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { AppHeader, AppFooter } from "@burrowsoft/shared";
+import { headers } from "next/headers";
+import { detectCountry, getCountryName, AppHeader, AppFooter } from "@burrowsoft/shared";
 import { Link } from "@/i18n/navigation";
 import { LocaleSelector } from "@/components/LocaleSelector";
 import { routing } from "@/i18n/routing";
@@ -38,13 +39,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const hdrs = await headers();
+  const country = detectCountry(Object.fromEntries(hdrs.entries()));
+  const countryName = getCountryName(country);
+  const desc = `Looking for car rental in ${countryName}? RentACarMole compares top providers. Free cancellation. No credit card required to search. Best deals guaranteed.`;
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `${SITE_NAME} — Compare & Book Rental Cars Worldwide`,
-      template: `%s | ${SITE_NAME}`,
+      default: `Car Rental in ${countryName} — RentACarMole`,
+      template: `%s | RentACarMole`,
     },
-    description: SITE_DESCRIPTION,
+    description: desc,
     keywords: ["car rental", "rent a car", "cheap car hire", "rental cars", "car hire deals"],
     authors: [{ name: SITE_NAME }],
     creator: SITE_NAME,
@@ -60,14 +65,14 @@ export async function generateMetadata({
       locale: locale.replace("-", "_"),
       url: locale === "en" ? `${BASE}/` : `${BASE}/${locale}/`,
       siteName: SITE_NAME,
-      title: `${SITE_NAME} — Compare & Book Rental Cars Worldwide`,
-      description: SITE_DESCRIPTION,
+      title: `Car Rental in ${countryName} — RentACarMole`,
+      description: desc,
       images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${SITE_NAME} — Compare & Book Rental Cars Worldwide`,
-      description: SITE_DESCRIPTION,
+      title: `Car Rental in ${countryName} — RentACarMole`,
+      description: desc,
       images: ["/og-image.png"],
     },
     other: { "google-adsense-account": "ca-pub-1009857008755875" },
