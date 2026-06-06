@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import {
@@ -12,7 +12,7 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { RegionalFloatingAd } from "@burrowsoft/shared";
+import { AppHeader, AppFooter } from "@burrowsoft/shared";
 import { Link } from "@/i18n/navigation";
 import { LocaleSelector } from "@/components/LocaleSelector";
 import { routing } from "@/i18n/routing";
@@ -51,10 +51,7 @@ export async function generateMetadata({
     alternates: {
       canonical: locale === "en" ? `${BASE}/` : `${BASE}/${locale}/`,
       languages: Object.fromEntries([
-        ...routing.locales.map((l) => [
-          l,
-          l === "en" ? `${BASE}/` : `${BASE}/${l}/`,
-        ]),
+        ...routing.locales.map((l) => [l, l === "en" ? `${BASE}/` : `${BASE}/${l}/`]),
         ["x-default", `${BASE}/`],
       ]),
     },
@@ -73,13 +70,8 @@ export async function generateMetadata({
       description: SITE_DESCRIPTION,
       images: ["/og-image.png"],
     },
-    icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
     other: { "google-adsense-account": "ca-pub-1009857008755875" },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
-    },
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
   };
 }
 
@@ -98,7 +90,6 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
-  const t = await getTranslations({ locale, namespace: "footer" });
   const tn = await getTranslations({ locale, namespace: "nav" });
   const fontClass = LOCALE_FONT[locale]?.className ?? "";
 
@@ -133,75 +124,36 @@ export default async function LocaleLayout({
           }) }}
         />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <header className="border-b border-slate-200 bg-white">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Main navigation">
+          <AppHeader
+            logo={
               <Link href="/" className="flex items-center gap-2.5">
-                <Image
-                  src="/mascot.png"
-                  alt={SITE_NAME}
-                  width={40}
-                  height={40}
-                  className="shrink-0"
-                  priority
-                />
+                <Image src="/mascot.png" alt={SITE_NAME} width={40} height={40} className="shrink-0" priority />
                 <span className="text-lg font-bold tracking-tight">{SITE_NAME}</span>
               </Link>
+            }
+            right={
               <div className="flex items-center gap-3">
                 <span className="hidden sm:block text-xs text-slate-400">{tn("tagline")}</span>
                 <LocaleSelector />
               </div>
-            </nav>
-          </header>
+            }
+          />
 
           <main>{children}</main>
 
-          <footer className="mt-16 border-t border-slate-200 bg-white">
-            <div className="mx-auto max-w-7xl px-4 py-8">
-              <div className="flex flex-wrap gap-6">
-                <div>
-                  <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{t("help")}</h3>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li><span className="text-slate-400">{t("insurance")}</span></li>
-                    <li><span className="text-slate-400">{t("cancellation")}</span></li>
-                    <li>
-                      <a href="mailto:support@rentacarmole.com" className="hover:text-rose-500 transition-colors">
-                        support@rentacarmole.com
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-8 border-t border-slate-100 pt-6">
-                <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-                  <a href="https://burrowsoft.com" target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors" aria-label="BurrowSoft">
-                    <Image src="/burrowsoft-logo.png" alt="BurrowSoft" width={28} height={28} className="shrink-0" />
-                    <span className="text-sm font-semibold">BurrowSoft</span>
-                  </a>
-                  <nav aria-label="BurrowSoft products">
-                    <ul className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-slate-400">
-                      {[
-                        { label: "FlyMole", href: "https://flymole.com" },
-                        { label: "BookingMole", href: "https://bookingmole.com" },
-                        { label: "InsightMole", href: "https://insightmole.com" },
-                        { label: "GamesMole", href: "https://gamesmole.com" },
-                        { label: "ShoppingMole", href: "https://shoppingmole.com" },
-                      ].map(({ label, href }) => (
-                        <li key={label}>
-                          <a href={href} target="_blank" rel="noopener noreferrer"
-                            className="hover:text-slate-600 transition-colors">
-                            {label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                  <p className="text-xs text-slate-400">{t("copyright")}</p>
-                </div>
-              </div>
+          <AppFooter
+            supportEmail="support@rentacarmole.com"
+            accentHoverClass="hover:text-rose-500"
+            currentSite="RentACarMole"
+          >
+            <div className="pb-4">
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">Help</h3>
+              <ul className="space-y-2 text-sm text-slate-600">
+                <li><span className="text-slate-400">Travel insurance</span></li>
+                <li><span className="text-slate-400">Free cancellation</span></li>
+              </ul>
             </div>
-          </footer>
+          </AppFooter>
 
           {/* <RegionalFloatingAd /> */}
           <Analytics />
