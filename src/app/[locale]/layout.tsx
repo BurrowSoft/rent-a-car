@@ -42,7 +42,7 @@ export async function generateMetadata({
   const hdrs = await headers();
   const country = detectCountry(Object.fromEntries(hdrs.entries()));
   const countryName = getCountryName(country);
-  const desc = `Looking for car rental in ${countryName}? RentACarMole compares top providers. Free cancellation. No credit card required to search. Best deals guaranteed.`;
+  const desc = `Clean Search. NO ADS. No sign-up. Looking for car rental in ${countryName}? RentACarMole compares top providers. Free cancellation. Best deals guaranteed.`;
   return {
     metadataBase: new URL(SITE_URL),
     title: {
