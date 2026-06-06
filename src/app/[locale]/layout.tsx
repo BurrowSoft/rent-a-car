@@ -46,8 +46,8 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `Car Rental in ${countryName} — RentACarMole`,
-      template: `%s | RentACarMole`,
+      default: `Car Rental in ${countryName} — Rent A Car Mole`,
+      template: `%s | Rent A Car Mole`,
     },
     description: desc,
     keywords: ["car rental", "rent a car", "cheap car hire", "rental cars", "car hire deals"],
@@ -65,13 +65,13 @@ export async function generateMetadata({
       locale: locale.replace("-", "_"),
       url: locale === "en" ? `${BASE}/` : `${BASE}/${locale}/`,
       siteName: SITE_NAME,
-      title: `Car Rental in ${countryName} — RentACarMole`,
+      title: `Car Rental in ${countryName} — Rent A Car Mole`,
       description: desc,
       images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Car Rental in ${countryName} — RentACarMole`,
+      title: `Car Rental in ${countryName} — Rent A Car Mole`,
       description: desc,
       images: ["/og-image.png"],
     },
